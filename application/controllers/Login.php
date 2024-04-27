@@ -23,9 +23,9 @@ class Login extends CI_Controller {
 			}
 		}
 
-		$this->load->view('layout/header');
+		// $this->load->view('layout/header');
 		$this->load->view('auth/login');
-		$this->load->view('layout/footer');
+		// $this->load->view('layout/footer');
 	}
 
 	public function Auth()

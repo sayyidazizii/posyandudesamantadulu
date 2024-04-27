@@ -52,3 +52,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+
+
+/*USER User/processEditUser*/
+$route['user']                                        = 'User';
+$route['change-password']                             = 'User/changePassword';
+$route['change-password/(:num)']                      = 'User/changePassword/$1';
+$route['user/add']                                    = 'User/Add';
+$route['user/edit']                                   = 'User/Edit';
+$route['user/edit/(:num)']                            = 'User/Edit/$1';
+$route['user/delete/(:num)']                          = 'User/delete/$1';
+$route['user/default-password/(:num)']                = 'User/defaultpassword/$1';
+$route['user/process-add']                            = 'User/processAddUser';
+$route['user/process-edit']                           = 'User/processEditUser';
