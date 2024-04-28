@@ -1,20 +1,21 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class user extends CI_Controller {
+class AdminController extends CI_Controller
+{
 
 	public function __construct()
 	{
-			parent::__construct();
-			if($this->session->userdata('is_login')!= true){
-				redirect('Login');
-			}
-			if($this->session->userdata('level')!= 1){
-				redirect('Home');
-			}
-			$this->load->model('M_user');
+		parent::__construct();
+		if ($this->session->userdata('is_login') != true) {
+			redirect('Login');
+		}
+		if ($this->session->userdata('level') != 1) {
+			redirect('Home');
+		}
+		$this->load->model('M_admin');
 	}
-	
+
 	public function index()
 	{
 		$data_user = $this->input->get('data_user');
@@ -34,14 +35,13 @@ class user extends CI_Controller {
 		}
 
 		$this->load->view('layout/footer');
-
 	}
 
 
 	public function processAdd()
 	{
 		$username = $this->input->post('username');
-		$password = $this->input->post('password'); 
+		$password = $this->input->post('password');
 		$nama = $this->input->post('nama');
 		$level = $this->input->post('level');
 
@@ -51,9 +51,9 @@ class user extends CI_Controller {
 			'nama' => $nama,
 			'level' => $level
 		);
-		
+
 		$this->db->insert('user', $data);
-        redirect("User");
+		redirect("User");
 	}
 
 
@@ -66,7 +66,6 @@ class user extends CI_Controller {
 		$this->load->view('layout/navbar');
 		$this->load->view('user/edit', $data);
 		$this->load->view('layout/footer');
-
 	}
 
 	public function edit_password($id_user)
@@ -78,7 +77,6 @@ class user extends CI_Controller {
 		$this->load->view('layout/navbar');
 		$this->load->view('user/edit_password', $data);
 		$this->load->view('layout/footer');
-
 	}
 
 
@@ -94,25 +92,25 @@ class user extends CI_Controller {
 			'nama' => $nama,
 			'level' => $level
 		);
-		
+
 
 		$this->M_user->update($id_user, $data);
-        redirect("User");
+		redirect("User");
 	}
 
 
 	public function processEditPassword()
 	{
 		$id_user = $this->input->post('id_user');
-		$password = $this->input->post('password'); 
+		$password = $this->input->post('password');
 
 		$data = array(
 			'password' => md5($password),
 		);
-		
+
 
 		$this->M_user->update($id_user, $data);
-        redirect("User");
+		redirect("User");
 	}
 
 	public function hapus()
@@ -122,10 +120,8 @@ class user extends CI_Controller {
 		$data = array(
 			'data_state' => 1,
 		);
-		
-		$this->M_user->delete($id_user, $data);
-        redirect("User");
-	}
-	
 
+		$this->M_user->delete($id_user, $data);
+		redirect("User");
+	}
 }
