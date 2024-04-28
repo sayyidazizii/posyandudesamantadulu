@@ -34,7 +34,7 @@
             height: 100%;
             background-color: #B0BEC5;
             background-repeat: no-repeat;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Gill Sans', sans-serif;
 
         }
 
@@ -171,7 +171,7 @@
         }
 
         .btn-blue:hover {
-            background-color: #000;
+            background-color: #5BBCFF;
             cursor: pointer;
         }
 
@@ -182,7 +182,7 @@
 
         @media screen and (max-width: 991px) {
             .logo {
-                margin-left: 0px;
+                margin-left: 20px;
             }
 
             .image {
@@ -201,75 +201,71 @@
         }
     </style>
 </head>
+<form action="<?php echo base_url() ?>Login/Auth" method="post">
 
-<body className='snippet-body'>
-    <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
-        <div class="card card0 border-0">
-            <div class="row d-flex">
-                <div class="col-lg-6">
-                    <div class="card1 pb-5">
-                        <div class="row">
-                            <img src="<?php echo base_url() ?>assets/img/Lambang_Kota_Palopo.png" class="logo">
-                        </div>
-                        <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
-                            <img src="<?php echo base_url() ?>assets/img/img1.jpg" class="image">
+    <body className='snippet-body'>
+        <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+            <div class="card card0 border-0">
+                <div class="row d-flex">
+                    <div class="col-lg-6">
+                        <div class="card1 pb-5">
+                            <div class="row">
+                                <img src="<?php echo base_url() ?>assets/img/Lambang_Kota_Palopo.png" class="logo">
+                            </div>
+                            <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
+                                <img src="<?php echo base_url() ?>assets/img/img1.jpg" class="image">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card2 card border-0 px-4 py-5">
-                        <div class="row mb-4 px-3">
-                            <h2 class="mb-0 mr-4 mt-2">Sistem Informasi Posyandu</h2>
-                            <h4 class="mb-0 mr-4 ">Desa Mantadulu</h4>
+                    <div class="col-lg-6">
+                        <div class="card2 card border-0 px-4 py-5">
+                            <div class="row mb-4 px-3">
+                                <h2 class="mb-0 mr-4 mt-2">Sistem Informasi Posyandu</h2>
+                                <h4 class="mb-0 mr-4 ">Desa Mantadulu</h4>
 
-                        </div>
-                        <div class="row px-3">
-                            <label class="mb-1">
-                                <h6 class="mb-0 text-sm">Username</h6>
-                            </label>
-                            <input class="mb-4" type="text" name="username" placeholder="Enter a valid username">
-                        </div>
-                        <div class="row px-3">
-                            <label class="mb-1">
-                                <h6 class="mb-0 text-sm">Password</h6>
-                            </label>
-                            <input type="password" name="password" placeholder="Enter password">
-                        </div>
-                        <div class="row mb-3 mt-2 px-3">
-                            <button type="submit" class="btn btn-blue text-center">Login</button>
-                        </div>
-                        <div class="row mb-4 px-3">
-                            <small class="font-weight-bold">Don't have an account? <a class="text-danger ">Register</a></small>
+                            </div>
+                            <div class="row px-3">
+                                <label class="mb-1">
+                                    <h6 class="mb-0 text-sm">Username</h6>
+                                </label>
+                                <input class="mb-4" type="text" name="username" placeholder="Enter a valid username">
+                            </div>
+                            <div class="row px-3">
+                                <label class="mb-1">
+                                    <h6 class="mb-0 text-sm">Password</h6>
+                                </label>
+                                <input type="password" name="password" placeholder="Enter password">
+                            </div>
+                            <div class="row mb-3 mt-2 px-3">
+                                <button type="submit" class="btn btn-blue text-center">Login</button>
+                            </div>
+                            <div class="row mb-4 px-3">
+                                <small class="font-weight-bold">Lupa Kata sandi? <a class="text-danger ">ubah password</a></small>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="bg-blue py-4">
-                <div class="row px-3">
-                    <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2024. All rights reserved.</small>
-                    <div class="social-contact ml-4 ml-sm-auto">
-                        <span class="fa fa-facebook mr-4 text-sm"></span>
-                        <span class="fa fa-google-plus mr-4 text-sm"></span>
-                        <span class="fa fa-linkedin mr-4 text-sm"></span>
-                        <span class="fa fa-twitter mr-4 mr-sm-5 text-sm"></span>
-                    </div>
-                </div>
-            </div>
+</form>
+</div>
+<div class="bg-blue py-4">
+    <div class="row px-3">
+        <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2024. All rights reserved.</small>
+        <div class="social-contact ml-4 ml-sm-auto">
+            <h6 class="mr-4 mr-sm-5 text-sm">Ni Luh Ayu Masri Anggraeni</h6>
         </div>
     </div>
-    <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
-    <script type='text/javascript' src='#'></script>
-    <script type='text/javascript' src='#'></script>
-    <script type='text/javascript' src='#'></script>
-    <script type='text/javascript'>
-        #
-    </script>
-    <script type='text/javascript'>
-        var myLink = document.querySelector('a[href="#"]');
-        myLink.addEventListener('click', function(e) {
-            e.preventDefault();
-        });
-    </script>
+</div>
+</div>
+</div>
+<script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+<script type='text/javascript' src='#'></script>
+<script type='text/javascript' src='#'></script>
+<script type='text/javascript' src='#'></script>
+<script type='text/javascript'>
+    var myLink = document.querySelector('a[href="#"]');
+    myLink.addEventListener('click', function(e) {
+        e.preventDefault();
+    });
+</script>
 
 </body>
 
