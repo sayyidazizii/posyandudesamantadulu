@@ -1,121 +1,144 @@
-          <div class="container-fluid">
-            <!--  Row 1 -->
-            <div class="row">
 
-            <?php if($_SESSION['level'] == 1){?>
-            <div class="col-sm-6 col-xl-4">
-              <div class="card overflow-hidden rounded-2">
-                <div class="card-body pt-5 p-4">
-                  <h6 class="fw-semibold fs-4"> 
-                  <div class="row">
-                    <div class="col">
-                    <i class="fas fa-user fs-8"></i>    
-                    </div>
-                    <div class="col">
-                    Total Pasien
-                    <h6 class="fw-semibold fs-4 mb-0">
-                    <?= $user ?>  
-                      <span class="ms-2 fw-normal text-muted fs-3">
-                      </span>
-                    </h6>
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+            </ol>
+          </div>
+
+          <div class="row mb-3">
+            <!-- Data Balita Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col mr-2">
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                      <div class="mt-2 mb-0 text-muted text-xs">
+                        <span class="text-success mr-2"></span>
+                        <div class="text-xs font-weight-bold text-uppercase mb-1">Data Balita</div>
                       </div>
-                  </div>         
-                  </h6>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-child fa-2x text-primary"></i>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <?php } ?>
-            <?php if($_SESSION['level'] == 1 || $_SESSION['level'] == 3){?>
-          <div class="col-sm-6 col-xl-4">
-            <div class="card overflow-hidden rounded-2">
-              <div class="card-body pt-5 p-4">
-                <h6 class="fw-semibold fs-4">
-                <div class="row">
-                    <div class="col">
-                      <i class="fas fa-shopping-bag fs-8"></i>             
-                    </div>
-                    <div class="col">
-                    Data Obat
-                      <h6 class="fw-semibold fs-4 mb-0">
-                      <?= $obat ?>
-                        <span class="ms-2 fw-normal text-muted fs-3">
-                        </span>
-                      </h6>
-                    </div>
-                </div>  
-                  </h6>
-              </div>
-            </div>
-          </div>
-          <?php } ?>
-          <?php if($_SESSION['level'] == 1 || $_SESSION['level'] == 2){?>
-          <div class="col-sm-6 col-xl-4">
-            <div class="card overflow-hidden rounded-2">
-              <div class="card-body pt-5 p-4">
-                <h6 class="fw-semibold fs-4">
-                    <div class="row">
-                      <div class="col">
-                        <i class="fas fa-hospital fs-8"></i>             
+            <!-- Data Kader Card Example -->
+             <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col mr-2">
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                      <div class="mt-2 mb-0 text-muted text-xs">
+                        <span class="text-success mr-2"></span>
+                        <div class="text-xs font-weight-bold text-uppercase mb-1">Data Kader</div>
                       </div>
-                      <div class="col">
-                      Total Rekam Medis
-                        <h6 class="fw-semibold fs-4 mb-0">
-                        <?= $rekam_medis ?>
-                          <span class="ms-2 fw-normal text-muted fs-3">
-                          </span>
-                        </h6>
-                      </div>
-                    </div>  
-                  </h6>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-female fa-2x text-success"></i>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <?php } ?>
-          <div class="container">
-            <h6>Data Rekam Medis</h6>
-            <canvas id="myChart" style="width: 100%; max-width:600px; margin-left:auto; margin-right:auto;"></canvas>
-          <!-- <canvas id="pieChart" style="width: 100%; max-width: 600px; height: auto;"></canvas> -->
+            <!-- Data Kematian Card Example -->
+             <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col mr-2">
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                      <div class="mt-2 mb-0 text-muted text-xs">
+                        <span class="text-success mr-2"></span>
+                        <div class="text-xs font-weight-bold text-uppercase mb-1">Data Kematian</div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-users fa-2x text-danger"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Data Penimbangan Card Example -->
+             <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col mr-2">
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                      <div class="mt-2 mb-0 text-muted text-xs">
+                        <span class="text-success mr-2"></span>
+                        <div class="text-xs font-weight-bold text-uppercase mb-1">Data Penimbangan</div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-users fa-2x text-warning"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Data Imunisasi Card Example -->
+             <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col mr-2">
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                      <div class="mt-2 mb-0 text-muted text-xs">
+                        <span class="text-success mr-2"></span>
+                        <div class="text-xs font-weight-bold text-uppercase mb-1">Data Imunisasi</div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-users fa-2x text-info"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+            
+          </div>
+          <!--Row-->
+
+          <div class="row">
+            <div class="col-lg-12 text-left">
+              <p>Selamat Datang, Admin </p>
+            </div>
+          </div>
+
+          <!-- Modal Logout -->
+          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Are you sure you want to logout?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                  <a href="<?php echo base_url() ?>Login/logout" class="btn btn-primary">Logout</a>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
-        
-        <script>
-
-        var labels = [];
-        var data = [];
-
-        <?php foreach($jumlah_rekam_medis_per_hari as $rm): ?>
-            labels.push('<?= $rm->tanggal_periksa ?>');
-            data.push(<?= $rm->jumlah_rekam_medis ?>);
-        <?php endforeach; ?>
-
-          // var xValues = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat"];
-          // var yValues = [55, 49, 44, 24, 15];
-          var barColors = [
-            "#b91d47",
-            "#00aba9",
-            "#2b5797",
-            "#e8c3b9",
-            "#1e7145"
-          ];
-
-          new Chart("myChart", {
-            type: "pie",
-            data: {
-              labels: labels,
-              datasets: [{
-                backgroundColor: barColors,
-                data: data
-              }]
-            },
-            options: {
-              title: {
-                display: true,
-                text: "rekam medis"
-              }
-            }
-          });
-        </script>
-        
+        <!---Container Fluid-->
+      </div>
+      

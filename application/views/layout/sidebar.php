@@ -1,103 +1,71 @@
-<aside class="left-sidebar">
-      <!-- Sidebar scroll-->
-      <div>
-        <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="<?= base_url('')?>" class="d-flex align-items-center">
-          <img src="<?= base_url('')?>/assets/img/logo.jpg" class="rounded-circle" width="40" alt="">
-          <span class="fw-bolder text-dark fs-6 mx-2">REKAM MEDIS</span>
-          </a>
-          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
-            <i class="ti ti-x fs-8"></i>
+<!-- Sidebar -->
+    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon">
+          <img src="<?php echo base_url() ?>assets/img/logo.png">
+        </div>
+        <div class="sidebar-brand-text mx-3">Posyandu Desa Mantadulu</div>
+      </a>
+      <hr class="sidebar-divider my-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">
+          <i class="fas fa-fw fa-home"></i>
+          <span>Dashboard</span></a>
+      </li>
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Features
+      </div>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
+          aria-expanded="true" aria-controls="collapseBootstrap">
+          <i class="far fa-fw fa-window-maximize"></i>
+          <span>Master Data</span>
+        </a>
+        <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">master data</h6>
+            <a class="collapse-item" href="alerts.html">Data Balita</a>
+            <a class="collapse-item" href="buttons.html">Data Kader</a>
+            <a class="collapse-item" href="dropdowns.html">Data Kematian</a>
           </div>
         </div>
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
-          <ul id="sidebarnav">
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Home</span>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="<?php echo base_url('Home') ?>" aria-expanded="false">
-                <span>
-                  <i class="ti ti-layout-dashboard"></i>
-                </span>
-                <span class="hide-menu">Dashboard</span>
-              </a>
-            </li>
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Menu</span>
-            </li>
-            <?php if($_SESSION['level'] == 1 ){?>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="<?php echo base_url('Pasien') ?>" aria-expanded="false">
-                <span>
-                  <i class="ti ti-user"></i>
-                </span>
-                <span class="hide-menu">Data Pasien</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="<?php echo base_url('Tarif') ?>" aria-expanded="false">
-                <span>
-                  <i class="ti ti-receipt-tax"></i>
-                </span>
-                <span class="hide-menu">Data Tarif</span>
-              </a>
-            </li>
-            <?php } ?>
-            <?php if($_SESSION['level'] == 3){?>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="<?php echo base_url('Obat') ?>" aria-expanded="false">
-                <span>
-                  <i class="ti ti-pill"></i>
-                </span>
-                <span class="hide-menu">Data Obat</span>
-              </a>
-            </li>
-            <?php } ?>
-            <?php if($_SESSION['level'] == 1 || $_SESSION['level'] == 2){?>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="<?php echo base_url('RekamMedis') ?>" aria-expanded="false">
-                <span>
-                  <i class="ti ti-file-description"></i>
-                </span>
-                <span class="hide-menu">Rekam Medis</span>
-              </a>
-            </li>
-            <?php if($_SESSION['level'] == 1){?>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="<?php echo base_url('Payment') ?>" aria-expanded="false">
-                <span>
-                  <i class="ti ti-file-dollar"></i>
-                </span>
-                <span class="hide-menu">Pembayaran</span>
-              </a>
-            </li>
-            <?php } ?>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="<?php echo base_url('Report') ?>" aria-expanded="false">
-                <span>
-                  <i class="ti ti-typography"></i>
-                </span>
-                <span class="hide-menu">Laporan</span>
-              </a>
-            </li>
-            <?php } ?>
-            <?php if($_SESSION['level'] == 0  ){?>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="<?php echo base_url('User') ?>" aria-expanded="false">
-                <span>
-                  <i class="ti ti-user"></i>
-                </span>
-                <span class="hide-menu">User</span>
-              </a>
-            </li>
-            <?php } ?>
-          </ul>
-        </nav>
-        <!-- End Sidebar navigation -->
-      </div>
-      <!-- End Sidebar scroll-->
-    </aside>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
+          aria-controls="collapseForm">
+          <i class="fab fa-fw fa-wpforms"></i>
+          <span>Layanan</span>
+        </a>
+        <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">layanan</h6>
+            <a class="collapse-item" href="form_basics.html">Penimbangan Balita</a>
+            <a class="collapse-item" href="form_advanceds.html">Imunisasi Balita</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
+          aria-controls="collapseTable">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Laporan</span>
+        </a>
+        <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">laporan</h6>
+            <a class="collapse-item" href="simple-tables.html">Laporan Balita</a>
+            <a class="collapse-item" href="datatables.html">Laporan Kematian</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url() ?>Login/logout">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Keluar</span>
+        </a>
+      </li>
+      <hr class="sidebar-divider">
+      <div class="version" id="version-ruangadmin"></div>
+    </ul>
+    <!-- Sidebar -->

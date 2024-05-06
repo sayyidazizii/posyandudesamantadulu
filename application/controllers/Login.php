@@ -46,9 +46,9 @@ class Login extends CI_Controller
 				'is_login'	=> true
 			);
 
-			echo json_encode($data_user);
-			echo 'Login Berhasil';
-			exit;
+			// echo json_encode($data_user);
+			// echo 'Login Berhasil';
+			// exit;
 
 			$this->session->set_userdata($data_user);
 			redirect('Home');

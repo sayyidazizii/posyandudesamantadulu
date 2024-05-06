@@ -34,7 +34,7 @@
             height: 100%;
             background-color: #B0BEC5;
             background-repeat: no-repeat;
-            font-family: 'Gill Sans', sans-serif;
+            /* font-family: 'Helvetica', sans-serif; */
 
         }
 
