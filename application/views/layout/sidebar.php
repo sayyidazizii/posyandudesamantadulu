@@ -1,14 +1,15 @@
+
 <!-- Sidebar -->
     <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url() ?>">
         <div class="sidebar-brand-icon">
           <img src="<?php echo base_url() ?>assets/img/logo.png">
         </div>
         <div class="sidebar-brand-text mx-3">Posyandu Desa Mantadulu</div>
       </a>
       <hr class="sidebar-divider my-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+      <li class="nav-item ">
+        <a class="nav-link" href="<?php echo base_url() ?>">
           <i class="fas fa-fw fa-home"></i>
           <span>Dashboard</span></a>
       </li>
@@ -25,9 +26,9 @@
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">master data</h6>
-            <a class="collapse-item" href="alerts.html">Data Balita</a>
-            <a class="collapse-item" href="buttons.html">Data Kader</a>
-            <a class="collapse-item" href="dropdowns.html">Data Kematian</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>balita">Data Balita</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>kader">Data Kader</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>kematian">Data Kematian</a>
           </div>
         </div>
       </li>
@@ -40,8 +41,8 @@
         <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">layanan</h6>
-            <a class="collapse-item" href="form_basics.html">Penimbangan Balita</a>
-            <a class="collapse-item" href="form_advanceds.html">Imunisasi Balita</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>penimbangan">Penimbangan Balita</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>imunisasi">Imunisasi Balita</a>
           </div>
         </div>
       </li>
@@ -54,8 +55,8 @@
         <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">laporan</h6>
-            <a class="collapse-item" href="simple-tables.html">Laporan Balita</a>
-            <a class="collapse-item" href="datatables.html">Laporan Kematian</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>">Laporan Balita</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>">Laporan Kematian</a>
           </div>
         </div>
       </li>

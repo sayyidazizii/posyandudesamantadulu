@@ -2,7 +2,7 @@
 
 class M_balita extends CI_Model
 {
-    public $table = 'balita';
+    public $table = 'tbl_balita';
 
     //crud
     public function get_data()

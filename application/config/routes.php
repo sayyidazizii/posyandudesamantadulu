@@ -66,3 +66,48 @@ $route['user/delete/(:num)']                          = 'User/delete/$1';
 $route['user/default-password/(:num)']                = 'User/defaultpassword/$1';
 $route['user/process-add']                            = 'User/processAddUser';
 $route['user/process-edit']                           = 'User/processEditUser';
+
+// Balita
+$route['balita']                                        = 'Balita';
+$route['balita/add']                                    = 'Balita/Add';
+$route['balita/edit']                                   = 'Balita/Edit';
+$route['balita/edit/(:num)']                            = 'Balita/Edit/$1';
+$route['balita/delete/(:num)']                          = 'Balita/delete/$1';
+$route['balita/process-add']                            = 'Balita/processAddBalita';
+$route['balita/process-edit']                           = 'Balita/processEditBalita';
+
+// Kader
+$route['kader']                                         = 'Kader';
+$route['kader/add']                                     = 'Kader/Add';
+$route['kader/edit']                                    = 'Kader/Edit';
+$route['kader/edit/(:num)']                             = 'Kader/Edit/$1';
+$route['kader/delete/(:num)']                           = 'Kader/delete/$1';
+$route['kader/process-add']                             = 'Kader/processAddKader';
+$route['kader/process-edit']                            = 'Kader/processEditKader';
+
+// Kematian
+$route['kematian']                                      = 'Kematian';
+$route['kematian/add']                                  = 'Kematian/Add';
+$route['kematian/edit']                                 = 'Kematian/Edit';
+$route['kematian/edit/(:num)']                          = 'Kematian/Edit/$1';
+$route['kematian/delete/(:num)']                        = 'Kematian/delete/$1';
+$route['kematian/process-add']                          = 'Kematian/processAddkematian';
+$route['kematian/process-edit']                         = 'Kematian/processEditkematian';
+
+// Penimbangan
+$route['penimbangan']                                   = 'Penimbangan';
+$route['penimbangan/add']                               = 'Penimbangan/Add';
+$route['penimbangan/edit']                              = 'Penimbangan/Edit';
+$route['penimbangan/edit/(:num)']                       = 'Penimbangan/Edit/$1';
+$route['penimbangan/delete/(:num)']                     = 'Penimbangan/delete/$1';
+$route['penimbangan/process-add']                       = 'Penimbangan/processAddPenimbangan';
+$route['penimbangan/process-edit']                      = 'Penimbangan/processEditPenimbangan';
+
+// Imunisasi
+$route['imunisasi']                                     = 'Imunisasi';
+$route['imunisasi/add']                                 = 'Imunisasi/Add';
+$route['imunisasi/edit']                                = 'Imunisasi/Edit';
+$route['imunisasi/edit/(:num)']                         = 'Imunisasi/Edit/$1';
+$route['imunisasi/delete/(:num)']                       = 'Imunisasi/delete/$1';
+$route['imunisasi/process-add']                         = 'Imunisasi/processAddImunisasi';
+$route['imunisasi/process-edit']                        = 'Imunisasi/processEditImunisasi';

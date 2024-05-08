@@ -1,8 +1,8 @@
 <?php
 
-class M_penimbangan extends CI_Model
+class M_kader extends CI_Model
 {
-    public $table = 'tbl_penimbangan';
+    public $table = 'tbl_kader';
 
     //crud
     public function get_data()
@@ -18,20 +18,20 @@ class M_penimbangan extends CI_Model
 
     public function getbyid($id)
     {
-        $this->db->where('id_penimbangan', $id);
+        $this->db->where('id_kader', $id);
         $query = $this->db->get($this->table);
         return $query->row();
     }
 
     public function update($id, $data)
     {
-        $this->db->where('id_penimbangan', $id);
+        $this->db->where('id_kader', $id);
         $this->db->update($this->table, $data);
     }
 
     public function delete($id, $data)
     {
-        $this->db->where('id_penimbangan', $id);
+        $this->db->where('id_kader', $id);
         $this->db->update($this->table, $data);
     }
 }

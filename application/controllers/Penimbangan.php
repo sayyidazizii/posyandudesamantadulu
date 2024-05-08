@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class BalitaController extends CI_Controller
+class Penimbangan extends CI_Controller
 {
 
     public function __construct()
@@ -10,17 +10,16 @@ class BalitaController extends CI_Controller
         if ($this->session->userdata('is_login') != true) {
             redirect('Login');
         }
-        $this->load->model('M_balita');
+        $this->load->model('M_penimbangan');
     }
 
     public function index()
     {
-      
-
+        $data['page'] = 'Penimbangan';
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar');
         $this->load->view('layout/navbar');
-        $this->load->view('content/Balita/index');
+        $this->load->view('content/Penimbangan/index',$data);
         $this->load->view('layout/footer');
     }
 }
