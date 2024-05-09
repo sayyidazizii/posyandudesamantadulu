@@ -7,6 +7,7 @@ class M_penimbangan extends CI_Model
     //crud
     public function get_data()
     {
+        $this->db->where('data_state', 0);
         $query = $this->db->get($this->table);
         return $query->result();
     }

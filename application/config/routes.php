@@ -89,6 +89,7 @@ $route['kader/process-edit']                            = 'Kader/processEditKade
 $route['kematian']                                      = 'Kematian';
 $route['kematian/add']                                  = 'Kematian/Add';
 $route['kematian/edit']                                 = 'Kematian/Edit';
+$route['kematian/dataBalita']                           = 'Kematian/fetch_data';
 $route['kematian/edit/(:num)']                          = 'Kematian/Edit/$1';
 $route['kematian/delete/(:num)']                        = 'Kematian/delete/$1';
 $route['kematian/process-add']                          = 'Kematian/processAddkematian';

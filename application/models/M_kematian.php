@@ -7,6 +7,7 @@ class M_kematian extends CI_Model
     //crud
     public function get_data()
     {
+        $this->db->where('data_state', 0);
         $query = $this->db->get($this->table);
         return $query->result();
     }
@@ -25,7 +26,7 @@ class M_kematian extends CI_Model
 
     public function update($id, $data)
     {
-        $this->db->where('id_kematian', $id);
+        $this->db->where('nib', $id);
         $this->db->update($this->table, $data);
     }
 

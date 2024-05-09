@@ -25,4 +25,16 @@ class Home extends CI_Controller
         $this->load->view('home');
         $this->load->view('layout/footer');
     }
+
+    public function logout()
+    {
+        $data['page']           = 'Keluar';
+
+        $this->load->view('layout/header');
+        $this->load->view('layout/sidebar');
+        $this->load->view('layout/navbar');
+        $this->load->view('logout',$data);
+        $this->load->view('layout/footer');
+    }
+
 }
