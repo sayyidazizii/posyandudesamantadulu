@@ -98,6 +98,7 @@ $route['kematian/process-edit']                         = 'Kematian/processEditk
 // Penimbangan
 $route['penimbangan']                                   = 'Penimbangan';
 $route['penimbangan/add']                               = 'Penimbangan/Add';
+$route['penimbangan/dataBalita']                        = 'Penimbangan/fetch_data';
 $route['penimbangan/edit']                              = 'Penimbangan/Edit';
 $route['penimbangan/edit/(:num)']                       = 'Penimbangan/Edit/$1';
 $route['penimbangan/delete/(:num)']                     = 'Penimbangan/delete/$1';

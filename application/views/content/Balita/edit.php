@@ -13,7 +13,10 @@
                 </li>
               </ol>
             </div>
-
+             <!-- Add Back button here, aligned to the right -->
+            <div class="d-flex justify-content-end mb-4">
+                <a href="javascript:history.back()" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+            </div>
             <!-- Row -->
             <div class="row">
               <!-- DataTable with Hover -->
