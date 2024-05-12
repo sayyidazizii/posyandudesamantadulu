@@ -11,18 +11,29 @@ class Home extends CI_Controller
             redirect('Login');
         }
         $this->load->model('M_admin');
+        $this->load->model('M_balita');
+        $this->load->model('M_kader');
+        $this->load->model('M_kematian');
+        $this->load->model('M_penimbangan');
+        $this->load->model('M_imunisasi');
+
     }
 
     public function index()
     {
-        // $data['user']           = $this->db->count_all('user');
-        // $data['obat']           = $this->db->count_all('obat');
-        // $data['rekam_medis']    = $this->db->count_all('rekam_medis');
+        $data['balita']         = $this->M_balita->count();
+        $data['kader']          = $this->M_kader->count();
+        $data['kematian']       = $this->M_kematian->count();
+        $data['penimbangan']    = $this->M_penimbangan->count();
+        $data['imunisasi']      = $this->M_imunisasi->count();
+        
+        // echo json_encode($data);
+        // exit;
 
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar');
         $this->load->view('layout/navbar');
-        $this->load->view('home');
+        $this->load->view('home',$data);
         $this->load->view('layout/footer');
     }
 

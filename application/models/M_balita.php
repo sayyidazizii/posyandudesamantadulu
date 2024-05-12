@@ -50,6 +50,19 @@ class M_balita extends CI_Model
         $this->db->order_by('tbl_balita.id_balita', 'DESC');
         return $this->db->get()->row();
     }
+
+    public function count()
+    {
+        $this->db->where('data_state', 0);
+        return $this->db->count_all_results($this->table);
+    }
+
+    public function print($id_balita)
+    {
+        $this->db->where('id_balita', $id_balita);
+        $query = $this->db->get($this->table);
+        return $query->result();
+    }
 }
 
 

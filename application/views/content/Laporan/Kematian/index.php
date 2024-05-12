@@ -25,48 +25,51 @@
           </h6>
         </div>
         <div class="container">
-          <form action="<?= base_url() ?>kematian/process-edit" method="post">
+          <form action="<?= base_url() ?>report/kematian/view" method="get">
             <table style="width: 100%">
-
-              <input type="hidden" name="id_kematian" id="id_kematian" class="form-control form-control-sm my-2 border-dark" value="<?php echo $kematian->id_kematian ?>" required readonly>
-              <input type="hidden" name="id_balita" id="id_balita" class="form-control form-control-sm my-2 border-dark" value="<?php echo $kematian->id_balita ?>" required readonly>
               <tr>
                 <th>NIB</th>
                 <td>
-                  <input type="text" name="nib" id="nib" class="form-control form-control-sm my-2 border-dark" value="<?php echo $kematian->nib ?>" required readonly>
+                  <select class="select2-single-placeholder form-control" name="id_balita" id="id_balita" required>
+                    <option value="0">Select</option>
+                    <?php foreach ($balita as $val) { ?>
+                      <option value="<?= $val->id_balita ?>"><?= $val->nib ?> - <?= $val->nama_lengkap ?></option>
+                    <?php } ?>
+                  </select>
                 </td>
               </tr>
+
+              <td><input type="text" hidden id="nib" class="form-control form-control-sm my-2 border-dark" required readonly></td>
               <tr>
                 <th>Nama Lengkap</th>
-                <td><input type="text" name="nama_lengkap" id="nama_lengkap" class="form-control form-control-sm my-2 border-dark" value="<?php echo $kematian->nama_lengkap ?>" required readonly></td>
-              </tr>
-              <tr>
-                <th>Tempat Lahir</th>
-                <td><input type="text" name="tempat_lahir" id="tempat_lahir" class="form-control form-control-sm my-2 border-dark" value="<?php echo $kematian->tempat_lahir ?>" readonly></td>
-              </tr>
-              <tr>
-                <th>Tanggal Lahir</th>
-                <td><input type="date" name="tanggal_lahir" id="tanggal_lahir" class="form-control form-control-sm my-2 border-dark" value="<?php echo $kematian->tanggal_lahir ?>" readonly></td>
+                <td><input type="text" id="nama_lengkap" class="form-control form-control-sm my-2 border-dark" required readonly></td>
               </tr>
               <tr>
                 <th>Jenis Kelamin</th>
-                <td><input type="text" name="jenis_kelamin" id="jenis_kelamin" class="form-control form-control-sm my-2 border-dark" value="<?php echo $kematian->jenis_kelamin ?>" readonly></td>
+                <td><input type="text" id="jenis_kelamin" class="form-control form-control-sm my-2 border-dark" readonly></td>
               </tr>
               <tr>
-                <th>Tanggal kematian</th>
-                <td><input type="date" name="tgl_kematian" id="tgl_kematian" class="form-control form-control-sm my-2 border-dark" value="<?php echo $kematian->tgl_kematian ?>" required></td>
+                <th>Tempat Lahir</th>
+                <td><input type="text" id="tempat_lahir" class="form-control form-control-sm my-2 border-dark" readonly></td>
               </tr>
               <tr>
-                <th>Alamat</th>
-                <td><textarea type="text" name="alamat" id="alamat" class="form-control form-control-sm my-2 border-dark"> <?php echo $kematian->alamat; ?></textarea></td>
+                <th>Tanggal Lahir</th>
+                <td><input type="date" id="tanggal_lahir" class="form-control form-control-sm my-2 border-dark" readonly></td>
               </tr>
               <tr>
-                <th>Keterangan</th>
-                <td><input type="text" name="keterangan" id="keterangan" class="form-control form-control-sm my-2 border-dark" value="<?php echo $kematian->keterangan ?>"></td>
+                <th>Nama Ayah</th>
+                <td><input type="text" id="nama_ayah" class="form-control form-control-sm my-2 border-dark" readonly></td>
+              </tr>
+              <tr>
+                <th>Nama Ibu</th>
+                <td><input type="text" id="nama_ibu" class="form-control form-control-sm my-2 border-dark" readonly></td>
               </tr>
               <tr>
                 <th></th>
-                <td><button type="submit" class="btn btn-primary my-2">Simpan</button></td>
+                <td>
+                  <button type="submit" class="btn btn-primary my-2">Lihat</button>
+                  <button type="reset" class="btn btn-primary my-2">Cetak</button>
+                </td>
               </tr>
             </table>
           </form>
@@ -110,30 +113,40 @@
     placeholder: "Select a Province",
     allowClear: true
   });
-  //nib
-  $('#nib').change(function() {
+  //id_balita
+  $('#id_balita').change(function() {
     // Mendapatkan nilai yang dipilih
-    var nib = $(this).val();
+    var idBalita = $(this).val();
 
     $.ajax({
-      url: '<?= base_url() ?>kematian/dataBalita',
+      url: '<?= base_url() ?>report/dataBalita',
       type: 'POST',
       data: {
-        nib: nib
+        id_balita: idBalita
       },
       success: function(response) {
         var data = JSON.parse(response);
         if (data) {
+          $('#nib').val(data.nib);
           $('#nama_lengkap').val(data.nama_lengkap);
           $('#tempat_lahir').val(data.tempat_lahir);
           $('#tanggal_lahir').val(data.tanggal_lahir);
           $('#jenis_kelamin').val(data.jenis_kelamin);
+          $('#nama_ayah').val(data.nama_ayah);
+          $('#nama_ibu').val(data.nama_ibu);
+          $('#usia').val(data.usia);
+
+
         } else {
           // If data is null or not found, empty the input fields
+          $('#nib').val('');
           $('#nama_lengkap').val('');
           $('#tempat_lahir').val('');
           $('#tanggal_lahir').val('');
           $('#jenis_kelamin').val('');
+          $('#nama_ayah').val('');
+          $('#nama_ibu').val('');
+          $('#usia').val('');
         }
       },
       error: function() {

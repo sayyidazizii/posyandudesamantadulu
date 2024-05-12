@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -108,8 +108,29 @@ $route['penimbangan/process-edit']                      = 'Penimbangan/processEd
 // Imunisasi
 $route['imunisasi']                                     = 'Imunisasi';
 $route['imunisasi/add']                                 = 'Imunisasi/Add';
+$route['imunisasi/dataBalita']                          = 'Imunisasi/fetch_data';
 $route['imunisasi/edit']                                = 'Imunisasi/Edit';
 $route['imunisasi/edit/(:num)']                         = 'Imunisasi/Edit/$1';
 $route['imunisasi/delete/(:num)']                       = 'Imunisasi/delete/$1';
 $route['imunisasi/process-add']                         = 'Imunisasi/processAddImunisasi';
 $route['imunisasi/process-edit']                        = 'Imunisasi/processEditImunisasi';
+
+
+// report Balita
+$route['report/dataBalita']                             = 'Report/fetch_data';
+
+$route['report/balita']                                 = 'Report/Balita';
+$route['report/balita/view']                            = 'Report/viewBalita';
+$route['report/balita/cetak']                           = 'Report/CetakBalita';
+$route['report/balita/export']                          = 'Report/exportBalita';
+$route['report/balita/print']                           = 'Report/printBalita';
+
+
+
+
+// report Kematian
+$route['report/kematian']                               = 'Report/Kematian';
+$route['report/kematian/view']                          = 'Report/viewKematian';
+$route['report/kematian/cetak']                         = 'Report/CetakKematian';
+$route['report/kematian/export']                           = 'Report/exportKematian';
+$route['report/kematian/print']                         = 'Report/printKematian';

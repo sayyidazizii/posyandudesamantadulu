@@ -224,6 +224,12 @@
                                 <h4 class="mb-0 mr-4 ">Desa Mantadulu</h4>
 
                             </div>
+                            <?php if ($this->session->flashdata('error_login') == true) {
+                            ?>
+                                <div class="alert alert-danger" role="alert">Username atau password yang Anda masukkan salah!</div>
+                            <?php
+                            }
+                            ?>
                             <div class="row px-3">
                                 <label class="mb-1">
                                     <h6 class="mb-0 text-sm">Username</h6>

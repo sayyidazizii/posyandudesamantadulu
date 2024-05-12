@@ -93,6 +93,40 @@ class Penimbangan extends CI_Controller
         $this->load->view('content/Penimbangan/edit',$data);
         $this->load->view('layout/footer');
     }
+    
+    function processEditPenimbangan()
+	{
+		$id_timbangan 	            = $this->input->post('id_timbangan');
+		$id_balita 	                = $this->input->post('id_balita');
+		$nama_lengkap 	            = $this->input->post('nama_lengkap');
+		$tempat_lahir 	            = $this->input->post('tempat_lahir');
+		$tanggal_lahir 	            = $this->input->post('tanggal_lahir');
+		$jenis_kelamin 	            = $this->input->post('jenis_kelamin');
+		$tgl_penimbangan 	        = $this->input->post('tgl_penimbangan');
+		$berat_badan 	            = $this->input->post('berat_badan');
+		$tinggi_badan 	            = $this->input->post('tinggi_badan');
+		$lingkar_kepala             = $this->input->post('lingkar_kepala');
+		$lingkar_perut 	            = $this->input->post('lingkar_perut');
+		$keterangan	                = $this->input->post('keterangan');
+
+		$data = array(
+			'id_balita'	        => $id_balita,
+			'tgl_penimbangan'   => $tgl_penimbangan,
+			'berat_badan'       => $berat_badan,
+			'tinggi_badan'      => $tinggi_badan,
+			'lingkar_kepala'    => $lingkar_kepala,
+			'lingkar_perut'     => $lingkar_perut,
+			'keterangan'	    => $keterangan,
+			'data_state'	    => 0
+		);
+        // echo json_encode($data);
+        // exit;
+
+		$this->M_penimbangan->update($id_timbangan,$data);
+        $this->session->set_flashdata('alert', 'Data berhasil diedit.');
+        $this->session->set_flashdata('alert_type', 'info');
+		redirect('penimbangan');
+	}
 
      function delete($idPenimbangan)
 	{

@@ -29,7 +29,7 @@
                     </h6>
                   </div>
                   <div class="container">
-                       <form action="<?= base_url() ?>imunisasi/process-add" method="post">
+                       <form action="<?= base_url() ?>report/balita/view" method="get">
                             <table style="width: 100%">
                                 <tr>
                                     <th>NIB</th>
@@ -43,74 +43,37 @@
                                     </td>
                                 </tr>
                                
-                                    <td><input type="text" hidden name="nib" id="nib" class="form-control form-control-sm my-2 border-dark" required readonly></td>
+                                    <td><input type="text" hidden id="nib" class="form-control form-control-sm my-2 border-dark" required readonly></td>
                                 <tr>
                                     <th>Nama Lengkap</th>
-                                    <td><input type="text" name="nama_lengkap" id="nama_lengkap" class="form-control form-control-sm my-2 border-dark" required readonly></td>
+                                    <td><input type="text"  id="nama_lengkap" class="form-control form-control-sm my-2 border-dark" required readonly></td>
                                 </tr>
                                  <tr>
                                     <th>Jenis Kelamin</th>
-                                    <td><input type="text" name="jenis_kelamin" id="jenis_kelamin" class="form-control form-control-sm my-2 border-dark" readonly></td>
+                                    <td><input type="text"  id="jenis_kelamin" class="form-control form-control-sm my-2 border-dark" readonly></td>
                                 </tr>
                                 <tr>
                                     <th>Tempat Lahir</th>
-                                    <td><input type="text" name="tempat_lahir" id="tempat_lahir" class="form-control form-control-sm my-2 border-dark" readonly></td>
+                                    <td><input type="text"  id="tempat_lahir" class="form-control form-control-sm my-2 border-dark" readonly></td>
                                 </tr>
                                 <tr>
                                     <th>Tanggal Lahir</th>
-                                    <td><input type="date" name="tanggal_lahir" id="tanggal_lahir" class="form-control form-control-sm my-2 border-dark" readonly></td>
+                                    <td><input type="date" id="tanggal_lahir" class="form-control form-control-sm my-2 border-dark" readonly></td>
                                 </tr>
                                  <tr>
                                     <th>Nama Ayah</th>
-                                    <td><input type="text" name="nama_ayah" id="nama_ayah" class="form-control form-control-sm my-2 border-dark" readonly></td>
+                                    <td><input type="text"  id="nama_ayah" class="form-control form-control-sm my-2 border-dark" readonly></td>
                                 </tr>
                                  <tr>
                                     <th>Nama Ibu</th>
-                                    <td><input type="text" name="nama_ibu" id="nama_ibu" class="form-control form-control-sm my-2 border-dark" readonly></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                    <h2>Imunisasi</h2>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th>Tanggal Imunisasi</th>
-                                    <td><input type="date" name="tgl_imunisasi" id="tgl_imunisasi" class="form-control form-control-sm my-2 border-dark" required ></td>
-                                </tr>
-                                <tr>
-                                    <th>Usia</th>
-                                    <td><input type="text" name="usia" id="usia" class="form-control form-control-sm my-2 border-dark" required readonly></td>
-                                </tr>
-                                 <tr>
-                                    <th>Imunisasi</th>
-                                    <td><input type="text" name="imunisasi" id="imunisasi" class="form-control form-control-sm my-2 border-dark" required ></td>
-                                </tr>
-                                 <tr>
-                                    <th>Vitamin A</th>
-                                    <td>
-                                        <div class="my-2">
-                                            <div class="d-flex flex-nowrap">
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="merah" name="vitamin" value="merah" class="custom-control-input">
-                                                    <label class="custom-control-label" for="merah">Merah</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="biru" name="vitamin" value="biru" class="custom-control-input">
-                                                    <label class="custom-control-label" for="biru">Biru</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Keterangan</th>
-                                    <td><input type="text" name="keterangan" id="keterangan" class="form-control form-control-sm my-2 border-dark"></td>
+                                    <td><input type="text"  id="nama_ibu" class="form-control form-control-sm my-2 border-dark" readonly></td>
                                 </tr>
                                 <tr>
                                     <th></th>
-                                    <td><button type="submit" class="btn btn-primary my-2">Tambah</button> 
-                                        <button type="reset" class="btn btn-primary my-2">cancel</button></td>
+                                    <td>
+                                      <button type="submit" class="btn btn-primary my-2">Lihat</button> 
+                                        <button type="reset" class="btn btn-primary my-2">Cetak</button>
+                                      </td>
                                 </tr>
                             </table>
                         </form>
@@ -160,7 +123,7 @@
         var idBalita = $(this).val();
         
             $.ajax({
-                url: '<?= base_url() ?>imunisasi/dataBalita',
+                url: '<?= base_url() ?>report/dataBalita',
                 type: 'POST',
                 data: {
                     id_balita : idBalita

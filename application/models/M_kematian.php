@@ -26,7 +26,7 @@ class M_kematian extends CI_Model
 
     public function update($id, $data)
     {
-        $this->db->where('nib', $id);
+        $this->db->where('id_kematian', $id);
         $this->db->update($this->table, $data);
     }
 
@@ -34,5 +34,18 @@ class M_kematian extends CI_Model
     {
         $this->db->where('id_kematian', $id);
         $this->db->update($this->table, $data);
+    }
+
+    public function count()
+    {
+        $this->db->where('data_state', 0);
+        return $this->db->count_all_results($this->table);
+    }
+
+    public function print($id_balita)
+    {
+        $this->db->where('id_balita', $id_balita);
+        $query = $this->db->get($this->table);
+        return $query->result();
     }
 }

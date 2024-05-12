@@ -29,7 +29,7 @@
                     </h6>
                   </div>
                   <div class="container">
-                       <form action="<?= base_url() ?>/penimbangan/process-add" method="post">
+                       <form action="<?= base_url() ?>penimbangan/process-add" method="post">
                             <table style="width: 100%">
                                 <tr>
                                     <th>NIB</th>
@@ -104,7 +104,7 @@
                                 </tr>
                                 <tr>
                                     <th></th>
-                                    <td><button type="submit" class="btn btn-primary my-2">Tambah</button> 
+                                    <td><button type="submit" class="btn btn-primary my-2">Simpan</button> 
                                         <button type="reset" class="btn btn-primary my-2">cancel</button></td>
                                 </tr>
                             </table>

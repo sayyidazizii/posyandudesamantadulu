@@ -29,8 +29,9 @@
                     </h6>
                   </div>
                   <div class="container">
-                       <form action="<?= base_url() ?>/penimbangan/process-add" method="post">
+                       <form action="<?= base_url() ?>penimbangan/process-edit" method="post">
                             <table style="width: 100%">
+                                    <td><input type="text" hidden name="id_timbangan" id="id_timbangan" class="form-control form-control-sm my-2 border-dark" value="<?php echo $penimbangan->id_timbangan ?>" required readonly></td>
                                 <tr>
                                     <th>NIB</th>
                                     <td>
@@ -106,7 +107,7 @@
                                 </tr>
                                 <tr>
                                     <th></th>
-                                    <td><button type="submit" class="btn btn-primary my-2">Tambah</button> 
+                                    <td><button type="submit" class="btn btn-primary my-2">Simpan</button> 
                                         <button type="reset" class="btn btn-primary my-2">cancel</button></td>
                                 </tr>
                             </table>
