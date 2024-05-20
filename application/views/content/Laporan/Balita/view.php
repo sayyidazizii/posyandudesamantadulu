@@ -26,7 +26,7 @@
         </div>
         <div class="container">
           <form action="<?= base_url() ?>report/balita/cetak" method="get">
-            <td><input type="text" hidden name="id_balita" id="id_balita" class="form-control form-control-sm my-2 border-dark" value="<?php echo $id_balita ?>" required readonly></td>
+            <td><input type="text" required hidden name="id_balita" id="id_balita" class="form-control form-control-sm my-2 border-dark" value="<?php echo $id_balita ?>" required readonly></td>
             <h3>
               <center>LAPORAN BALITA</center>
             </h3>
@@ -41,6 +41,11 @@
                   <th>Usia</th>
                   <th>Nama Ayah</th>
                   <th>Nama Ibu</th>
+                  <!-- <th>Berat Badan</th>
+                  <th>Tinggi Badan</th>
+                  <th>Lingkar Kepala</th>
+                  <th>Lingkar Perut</th>
+                  <th>Keterangan</th> -->
                 </tr>
               </thead>
               <tbody>
@@ -55,7 +60,7 @@
                     <td><?= $val->nama_lengkap ?></td>
                     <td><?= $val->tempat_lahir ?> , <?= $val->tanggal_lahir ?></td>
                     <td><?= $val->jenis_kelamin ?></td>
-                    <td><?= $val->usia ?> th</td>
+                    <td><?= $val->usia ?>Bulan</td>
                     <td><?= $val->nama_ayah ?></td>
                     <td><?= $val->nama_ibu ?></td>
                   </tr>
@@ -65,10 +70,18 @@
             </table>
             <!-- Tombol aksi -->
             <div class="d-flex justify-content-end">
+              <a href="<?php echo base_url() ?>report/balita/analys?id_balita=<?= $id_balita ?>" target="_blank" class="btn btn-primary mx-2 my-2">Analisis Stunting <i class="fas fa-search"></i></a>
+              <!-- <button id="analisisStunting" class="btn btn-primary mx-2 my-2">Analisis Stunting <i class="fas fa-search"></i></button> -->
+              <a href="<?php echo base_url() ?>report/balita/rekap?id_balita=<?= $id_balita ?>" target="_blank" class="btn btn-primary mx-2 my-2">Rekap Data Penimbangan</a>
+              <a href="<?php echo base_url() ?>report/balita/rekap_imunisasi?id_balita=<?= $id_balita ?>" target="_blank" class="btn btn-primary mx-2 my-2">Rekap Data Imunisasi</a>
               <a href="<?php echo base_url() ?>report/balita/cetak?id_balita=<?= $id_balita ?>" target="_blank" class="btn btn-primary mx-2 my-2">Unduh Pdf</a>
               <a href="<?php echo base_url() ?>report/balita/export?id_balita=<?= $id_balita ?>" target="_blank" class="btn btn-primary mx-2 my-2">Export Excel</a>
               <a href="<?php echo base_url() ?>report/balita/print?id_balita=<?= $id_balita ?>" target="_blank" class="btn btn-primary mx-2 my-2">Print</a>
             </div>
+
+            <!-- Grafik -->
+            <canvas id="grafikPenimbangan"></canvas>
+
           </form>
         </div>
       </div>
@@ -83,6 +96,8 @@
   <i class="fas fa-angle-up"></i>
 </a>
 
+<!-- Script JavaScript untuk Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- Javascript for this page -->
 <!-- Select2 -->
 <script src="<?php echo base_url() ?>assets/ruang-admin/vendor/jquery/jquery.min.js"></script>

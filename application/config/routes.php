@@ -49,9 +49,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'login';
+$route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['Login/forget']                                = 'Login/forget_pass';
+$route['Login/search']                                = 'Login/search_user';
+$route['Login/reset']                                 = 'Login/save_pass';
+
 
 
 
@@ -121,16 +126,20 @@ $route['report/dataBalita']                             = 'Report/fetch_data';
 
 $route['report/balita']                                 = 'Report/Balita';
 $route['report/balita/view']                            = 'Report/viewBalita';
+$route['report/balita/rekap']                           = 'Report/viewRekap';
+$route['report/balita/rekap_imunisasi']                 = 'Report/viewRekapImunisasi';
+$route['report/balita/analys']                          = 'Report/viewAnalys';
 $route['report/balita/cetak']                           = 'Report/CetakBalita';
 $route['report/balita/export']                          = 'Report/exportBalita';
 $route['report/balita/print']                           = 'Report/printBalita';
 
 
 
-
 // report Kematian
+$route['report/dataKematian']                           = 'Report/fetch_data_kematian';
+
 $route['report/kematian']                               = 'Report/Kematian';
 $route['report/kematian/view']                          = 'Report/viewKematian';
 $route['report/kematian/cetak']                         = 'Report/CetakKematian';
-$route['report/kematian/export']                           = 'Report/exportKematian';
+$route['report/kematian/export']                        = 'Report/exportKematian';
 $route['report/kematian/print']                         = 'Report/printKematian';

@@ -1,18 +1,16 @@
           <!-- Container Fluid-->
           <div class="container-fluid" id="container-wrapper">
-            <div
-              class="d-sm-flex align-items-center justify-content-between mb-4"
-            >
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
               <h1 class="h3 mb-0 text-gray-800">Data <?php echo $page ?></h1>
 
-              <?php if($this->session->flashdata('alert')): ?>
-              <div class="alert alert-<?php echo $this->session->flashdata('alert_type'); ?> alert-dismissible fade show" role="alert">
+              <?php if ($this->session->flashdata('alert')) : ?>
+                <div class="alert alert-<?php echo $this->session->flashdata('alert_type'); ?> alert-dismissible fade show" role="alert">
                   <?php echo $this->session->flashdata('alert'); ?>
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                   </button>
-              </div>
-              
+                </div>
+
               <?php endif; ?>
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="./">Home</a></li>
@@ -28,17 +26,14 @@
               <!-- DataTable with Hover -->
               <div class="col-lg-12">
                 <div class="card mb-4">
-                  <div
-                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">
                       <a href="<?= base_url() ?>balita/add" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Data <?php echo $page ?></a>
                     </h6>
                   </div>
                   <div class="table-responsive p-3">
-                    <table
-                      class="table align-items-center table-flush table-hover"
-                      id="dataTableHover">
-                      
+                    <table class="table align-items-center table-flush table-hover" id="dataTableHover">
+
                       <!-- fetch data -->
                       <thead class="thead-light">
                         <tr>
@@ -47,7 +42,7 @@
                           <th>Nama Lengkap</th>
                           <th>Tempat Tanggal Lahir</th>
                           <th>Jenis Kelamin</th>
-                          <th>Usia</th>
+                          <th width="15%">Usia</th>
                           <th>Nama Ayah</th>
                           <th>Nama Ibu</th>
                           <th>Aksi</th>
@@ -56,27 +51,27 @@
                       <tbody>
                         <?php
                         $no = 0;
-                         foreach($balita as $val){ 
+                        foreach ($balita as $val) {
                           $no++
                         ?>
-                        <tr>
-                          <td><?= $no ?></td>
-                          <td><?= $val->nib ?></td>
-                          <td><?= $val->nama_lengkap ?></td>
-                          <td><?= $val->tempat_lahir ?> , <?= $val->tanggal_lahir ?></td>
-                          <td><?= $val->jenis_kelamin ?></td>
-                          <td><?= $val->usia ?> th</td>
-                          <td><?= $val->nama_ayah ?></td>
-                          <td><?= $val->nama_ibu ?></td>
-                          <td>
-                            <div class="d-flex flex-nowrap ">
+                          <tr>
+                            <td><?= $no ?></td>
+                            <td><?= $val->nib ?></td>
+                            <td><?= $val->nama_lengkap ?></td>
+                            <td><?= $val->tempat_lahir ?> , <?= $val->tanggal_lahir ?></td>
+                            <td><?= $val->jenis_kelamin ?></td>
+                            <td><?= $val->usia ?> Bulan</td>
+                            <td><?= $val->nama_ayah ?></td>
+                            <td><?= $val->nama_ibu ?></td>
+                            <td>
+                              <div class="d-flex flex-nowrap ">
                                 <a href="<?= base_url() ?>balita/edit/<?= $val->id_balita ?>" class="btn btn-sm btn-warning mx-2"><i class="fas fa-pen"></i></a>
                                 <a href="<?= base_url() ?>balita/delete/<?= $val->id_balita ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fas fa-trash"></i></a>
-                            </div>
-                          </td>
-                        </tr>
+                              </div>
+                            </td>
+                          </tr>
                         <?php } ?>
-                        
+
                       </tbody>
                       <!-- end fetch data -->
 
@@ -88,4 +83,4 @@
             <!--Row-->
           </div>
           <!---Container Fluid-->
-        </div>
+          </div>

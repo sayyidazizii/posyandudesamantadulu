@@ -9,7 +9,30 @@ class M_admin extends CI_Model
     {
         $query = $this->db->get_where($this->table, array(
             'username' => $username,
-            'password' => $password
+            'password' => $password,
+            'level' => 1
+
+        ));
+        return $query;
+    }
+
+    //ketua
+    function check_ketua($username, $password)
+    {
+        $query = $this->db->get_where($this->table, array(
+            'username' => $username,
+            'password' => $password,
+            'level' => 2
+
+        ));
+        return $query;
+    }
+
+    //search
+    function search_user($username)
+    {
+        $query = $this->db->get_where($this->table, array(
+            'username' => $username,
         ));
         return $query;
     }

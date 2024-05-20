@@ -37,12 +37,17 @@ class M_balita extends CI_Model
         $this->db->update($this->table, $data);
     }
 
-    public function delete($id, $data)
+    // public function delete($id, $data)
+    // {
+    //     $this->db->where('id_balita', $id);
+    //     $this->db->update($this->table, $data);
+    // }
+
+    public function delete($id)
     {
         $this->db->where('id_balita', $id);
-        $this->db->update($this->table, $data);
+        $this->db->delete($this->table);
     }
-
     function latest()
     {
         $this->db->select('tbl_balita.*');
@@ -59,10 +64,30 @@ class M_balita extends CI_Model
 
     public function print($id_balita)
     {
-        $this->db->where('id_balita', $id_balita);
-        $query = $this->db->get($this->table);
-        return $query->result();
+
+        $this->db->select('tbl_penimbangan.*, tbl_balita.*');
+        $this->db->from($this->table);
+        $this->db->join('tbl_penimbangan', 'tbl_balita.id_balita = tbl_penimbangan.id_balita');
+        $this->db->where('tbl_balita.id_balita', $id_balita);
+        $this->db->where('tbl_penimbangan.data_state', 0);
+        return $this->db->get()->result();
+        // $this->db->where('id_balita', $id_balita);
+        // $query = $this->db->get($this->table);
+        // return $query->result();
+    }
+
+    public function view($id_balita)
+    {
+
+        $this->db->select('tbl_penimbangan.*, tbl_balita.*');
+        $this->db->from($this->table);
+        $this->db->join('tbl_penimbangan', 'tbl_balita.id_balita = tbl_penimbangan.id_balita');
+        $this->db->where('tbl_balita.id_balita', $id_balita);
+        $this->db->where('tbl_penimbangan.data_state', 0);
+        $this->db->limit(1);
+        return $this->db->get()->result();
+        // $this->db->where('id_balita', $id_balita);
+        // $query = $this->db->get($this->table);
+        // return $query->result();
     }
 }
-
-

@@ -201,7 +201,7 @@
         }
     </style>
 </head>
-<form action="<?php echo base_url() ?>Login/Auth" method="post">
+<form action="<?php echo base_url() ?>Login/AuthAdmin" method="post">
 
     <body className='snippet-body'>
         <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
@@ -210,7 +210,8 @@
                     <div class="col-lg-6">
                         <div class="card1 pb-5">
                             <div class="row">
-                                <img src="<?php echo base_url() ?>assets/img/Lambang_Kota_Palopo.png" class="logo">
+                                <img src="<?php echo base_url() ?>assets/img/luwu.png" class="logo">
+                                <img src="<?php echo base_url() ?>assets/img/login-img.png" class="logo">
                             </div>
                             <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
                                 <img src="<?php echo base_url() ?>assets/img/img1.jpg" class="image">
@@ -219,17 +220,27 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="card2 card border-0 px-4 py-5">
-                            <div class="row mb-4 px-3">
+                            <div class="row mb-2 px-3">
                                 <h2 class="mb-0 mr-4 mt-2">Sistem Informasi Posyandu</h2>
                                 <h4 class="mb-0 mr-4 ">Desa Mantadulu</h4>
-
                             </div>
+                            <p class="text-center">Login Admin</p>
+
                             <?php if ($this->session->flashdata('error_login') == true) {
                             ?>
                                 <div class="alert alert-danger" role="alert">Username atau password yang Anda masukkan salah!</div>
                             <?php
                             }
                             ?>
+                            <?php if ($this->session->flashdata('alert')) : ?>
+                                <div class="alert alert-<?php echo $this->session->flashdata('alert_type'); ?> alert-dismissible fade show" role="alert">
+                                    <?php echo $this->session->flashdata('alert'); ?>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                            <?php endif; ?>
                             <div class="row px-3">
                                 <label class="mb-1">
                                     <h6 class="mb-0 text-sm">Username</h6>
@@ -246,7 +257,7 @@
                                 <button type="submit" class="btn btn-blue text-center">Login</button>
                             </div>
                             <div class="row mb-4 px-3">
-                                <small class="font-weight-bold">Lupa Kata sandi? <a class="text-danger ">ubah password</a></small>
+                                <small class="font-weight-bold">Lupa Kata sandi? <a href="<?= base_url() ?>Login/forget" class="text-danger ">ubah password</a></small>
                             </div>
                         </div>
                     </div>

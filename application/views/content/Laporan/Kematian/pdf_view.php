@@ -16,6 +16,7 @@
             <thead>
                 <tr>
                     <th>No</th>
+                    <th>Tanggal Kematian</th>
                     <th>NIB</th>
                     <th>Nama Lengkap</th>
                     <th>Tempat Tanggal Lahir</th>
@@ -31,6 +32,7 @@
                 ?>
                     <tr>
                         <td><?= $no ?></td>
+                        <td><?= $val->tgl_kematian ?></td>
                         <td><?= $val->nib ?></td>
                         <td><?= $val->nama_lengkap ?></td>
                         <td><?= $val->tempat_lahir ?> , <?= $val->tanggal_lahir ?></td>
@@ -38,7 +40,11 @@
                         <td><?= $val->keterangan ?></td>
                     </tr>
                 <?php } ?>
-
+                <?php
+                if ($kematian < 0) {
+                    echo  "<td colspan='8' class='text-center'>tidak ada data</td>";
+                } ?>
+                ?>
             </tbody>
         </table>
 

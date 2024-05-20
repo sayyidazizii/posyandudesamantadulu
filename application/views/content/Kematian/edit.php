@@ -38,11 +38,11 @@
               </tr>
               <tr>
                 <th>Nama Lengkap</th>
-                <td><input type="text" name="nama_lengkap" id="nama_lengkap" class="form-control form-control-sm my-2 border-dark" value="<?php echo $kematian->nama_lengkap ?>" required readonly></td>
+                <td><input type="text" required oninput="validateText(this)" name="nama_lengkap" id="nama_lengkap" class="form-control form-control-sm my-2 border-dark" value="<?php echo $kematian->nama_lengkap ?>" required readonly></td>
               </tr>
               <tr>
                 <th>Tempat Lahir</th>
-                <td><input type="text" name="tempat_lahir" id="tempat_lahir" class="form-control form-control-sm my-2 border-dark" value="<?php echo $kematian->tempat_lahir ?>" readonly></td>
+                <td><input type="text" required oninput="validateText(this)" name="tempat_lahir" id="tempat_lahir" class="form-control form-control-sm my-2 border-dark" value="<?php echo $kematian->tempat_lahir ?>" readonly></td>
               </tr>
               <tr>
                 <th>Tanggal Lahir</th>
@@ -50,7 +50,7 @@
               </tr>
               <tr>
                 <th>Jenis Kelamin</th>
-                <td><input type="text" name="jenis_kelamin" id="jenis_kelamin" class="form-control form-control-sm my-2 border-dark" value="<?php echo $kematian->jenis_kelamin ?>" readonly></td>
+                <td><input type="text" required oninput="validateText(this)" name="jenis_kelamin" id="jenis_kelamin" class="form-control form-control-sm my-2 border-dark" value="<?php echo $kematian->jenis_kelamin ?>" readonly></td>
               </tr>
               <tr>
                 <th>Tanggal kematian</th>
@@ -58,11 +58,11 @@
               </tr>
               <tr>
                 <th>Alamat</th>
-                <td><textarea type="text" name="alamat" id="alamat" class="form-control form-control-sm my-2 border-dark"> <?php echo $kematian->alamat; ?></textarea></td>
+                <td><textarea type="text" oninput="validateText(this)" name="alamat" id="alamat" class="form-control form-control-sm my-2 border-dark"> <?php echo $kematian->alamat; ?></textarea></td>
               </tr>
               <tr>
                 <th>Keterangan</th>
-                <td><input type="text" name="keterangan" id="keterangan" class="form-control form-control-sm my-2 border-dark" value="<?php echo $kematian->keterangan ?>"></td>
+                <td><input type="text" required name="keterangan" id="keterangan" class="form-control form-control-sm my-2 border-dark" value="<?php echo $kematian->keterangan ?>"></td>
               </tr>
               <tr>
                 <th></th>
@@ -77,6 +77,15 @@
   <!--Row-->
 </div>
 <!---Container Fluid-->
+<script>
+  function validateText(input) {
+    input.value = input.value.replace(/[^A-Za-z]/g, '');
+  }
+
+  function validateNumber(input) {
+    input.value = input.value.replace(/\D/g, '');
+  }
+</script>
 </div>
 <!-- Scroll to top -->
 <a class="scroll-to-top rounded" href="#page-top">

@@ -25,8 +25,12 @@
           </h6>
         </div>
         <div class="container">
+          <div id="notifDataTidakAda" class="alert alert-danger" style="display: none;">
+            Data Kematian tidak ditemukan. Cek di data kematian
+          </div>
           <form action="<?= base_url() ?>report/kematian/view" method="get">
             <table style="width: 100%">
+              <input type="hidden" id="id_balita_hidden" name="id_balita" value="">
               <tr>
                 <th>NIB</th>
                 <td>
@@ -38,19 +42,22 @@
                   </select>
                 </td>
               </tr>
-
-              <td><input type="text" hidden id="nib" class="form-control form-control-sm my-2 border-dark" required readonly></td>
+              <tr>
+                <th>Tanggal kematian</th>
+                <td><input type="text" required id="tgl_kematian" class="form-control form-control-sm my-2 border-dark" required readonly></td>
+              </tr>
+              <td><input type="text" required hidden id="nib" class="form-control form-control-sm my-2 border-dark" required readonly></td>
               <tr>
                 <th>Nama Lengkap</th>
-                <td><input type="text" id="nama_lengkap" class="form-control form-control-sm my-2 border-dark" required readonly></td>
+                <td><input type="text" required id="nama_lengkap" class="form-control form-control-sm my-2 border-dark" required readonly></td>
               </tr>
               <tr>
                 <th>Jenis Kelamin</th>
-                <td><input type="text" id="jenis_kelamin" class="form-control form-control-sm my-2 border-dark" readonly></td>
+                <td><input type="text" required id="jenis_kelamin" class="form-control form-control-sm my-2 border-dark" readonly></td>
               </tr>
               <tr>
                 <th>Tempat Lahir</th>
-                <td><input type="text" id="tempat_lahir" class="form-control form-control-sm my-2 border-dark" readonly></td>
+                <td><input type="text" required id="tempat_lahir" class="form-control form-control-sm my-2 border-dark" readonly></td>
               </tr>
               <tr>
                 <th>Tanggal Lahir</th>
@@ -58,17 +65,17 @@
               </tr>
               <tr>
                 <th>Nama Ayah</th>
-                <td><input type="text" id="nama_ayah" class="form-control form-control-sm my-2 border-dark" readonly></td>
+                <td><input type="text" required id="nama_ayah" class="form-control form-control-sm my-2 border-dark" readonly></td>
               </tr>
               <tr>
                 <th>Nama Ibu</th>
-                <td><input type="text" id="nama_ibu" class="form-control form-control-sm my-2 border-dark" readonly></td>
+                <td><input type="text" required id="nama_ibu" class="form-control form-control-sm my-2 border-dark" readonly></td>
               </tr>
               <tr>
                 <th></th>
                 <td>
                   <button type="submit" class="btn btn-primary my-2">Lihat</button>
-                  <button type="reset" class="btn btn-primary my-2">Cetak</button>
+                  <a href="#" id="printButton" class="btn btn-primary mx-2 my-2">cetak</a>
                 </td>
               </tr>
             </table>
@@ -113,21 +120,32 @@
     placeholder: "Select a Province",
     allowClear: true
   });
+
+  $('#id_balita').change(function() {
+    var idBalita = $(this).val();
+    $('#id_balita_hidden').val(idBalita); // Set the value of hidden input
+    // Rest of your code
+  });
+
   //id_balita
   $('#id_balita').change(function() {
     // Mendapatkan nilai yang dipilih
     var idBalita = $(this).val();
 
+    // console.log(idBalita);
+
     $.ajax({
-      url: '<?= base_url() ?>report/dataBalita',
+      url: '<?= base_url() ?>report/dataKematian',
       type: 'POST',
       data: {
         id_balita: idBalita
       },
       success: function(response) {
+        // console.log(response);
         var data = JSON.parse(response);
         if (data) {
           $('#nib').val(data.nib);
+          $('#tgl_kematian').val(data.tgl_kematian);
           $('#nama_lengkap').val(data.nama_lengkap);
           $('#tempat_lahir').val(data.tempat_lahir);
           $('#tanggal_lahir').val(data.tanggal_lahir);
@@ -135,11 +153,13 @@
           $('#nama_ayah').val(data.nama_ayah);
           $('#nama_ibu').val(data.nama_ibu);
           $('#usia').val(data.usia);
-
+          // Sembunyikan notifikasi jika data ditemukan
+          $('#notifDataTidakAda').hide();
 
         } else {
           // If data is null or not found, empty the input fields
           $('#nib').val('');
+          $('#tgl_kematian').val('');
           $('#nama_lengkap').val('');
           $('#tempat_lahir').val('');
           $('#tanggal_lahir').val('');
@@ -147,13 +167,22 @@
           $('#nama_ayah').val('');
           $('#nama_ibu').val('');
           $('#usia').val('');
+          // Tampilkan notifikasi jika data tidak ditemukan
+          $('#notifDataTidakAda').show();
         }
       },
       error: function() {
-        // console.log('Terjadi kesalahan saat menyimpan data jasa.');
+        // Tampilkan notifikasi jika terjadi kesalahan
+        $('#notifDataTidakAda').text('Terjadi kesalahan saat memuat data.').show();
 
       }
     });
+  });
+
+  $('#printButton').click(function() {
+    var idBalita = $('#id_balita_hidden').val();
+    var printUrl = "<?php echo base_url() ?>report/kematian/print?id_balita=" + idBalita;
+    window.open(printUrl, '_blank'); // Open print URL in a new tab
   });
 </script>
 

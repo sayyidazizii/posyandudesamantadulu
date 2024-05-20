@@ -1,7 +1,7 @@
 <!-- Sidebar -->
 <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
   <li class="nav-item">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url() ?>">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url() ?>Home">
       <div class="sidebar-brand-icon">
         <img src="<?php echo base_url() ?>assets/img/logo.png">
       </div>
@@ -10,7 +10,7 @@
     <hr class="sidebar-divider my-0">
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="<?php echo base_url() ?>">
+    <a class="nav-link" href="<?php echo base_url() ?>Home">
       <i class="fas fa-fw fa-home"></i>
       <span>Dashboard</span>
     </a>

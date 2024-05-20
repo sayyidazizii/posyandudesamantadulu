@@ -40,13 +40,15 @@ class Kader extends CI_Controller
         $tanggal_lahir     = $this->input->post('tanggal_lahir');
         $jabatan        = $this->input->post('jabatan');
         $lama_kerja        = $this->input->post('lama_kerja');
+        $type           = $this->input->post('type');
 
         $data = array(
-            'nama_lengkap'    => $nama_lengkap,
-            'tempat_lahir'    => $tempat_lahir,
+            'nama_lengkap'  => $nama_lengkap,
+            'tempat_lahir'  => $tempat_lahir,
             'tanggal_lahir' => $tanggal_lahir,
-            'jabatan'        => $jabatan,
+            'jabatan'       => $jabatan,
             'lama_kerja'    => $lama_kerja,
+            'type'          => $type,
             'data_state'    => 0
         );
 
@@ -78,6 +80,8 @@ class Kader extends CI_Controller
         $tanggal_lahir     = $this->input->post('tanggal_lahir');
         $jabatan        = $this->input->post('jabatan');
         $lama_kerja        = $this->input->post('lama_kerja');
+        $type           = $this->input->post('type');
+
 
         $data = array(
             'nama_lengkap'    => $nama_lengkap,
@@ -85,6 +89,8 @@ class Kader extends CI_Controller
             'tanggal_lahir' => $tanggal_lahir,
             'jabatan'        => $jabatan,
             'lama_kerja'    => $lama_kerja,
+            'type'          => $type,
+
         );
 
         // echo json_encode($data);

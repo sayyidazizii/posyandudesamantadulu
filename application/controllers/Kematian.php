@@ -47,6 +47,7 @@ class Kematian extends CI_Controller
     function processAddkematian()
     {
         $nib             = $this->input->post('nib');
+        $id_balita             = $this->input->post('id_balita');
         $nama_lengkap     = $this->input->post('nama_lengkap');
         $tempat_lahir     = $this->input->post('tempat_lahir');
         $tanggal_lahir     = $this->input->post('tanggal_lahir');
@@ -57,6 +58,7 @@ class Kematian extends CI_Controller
 
         $data = array(
             'nib'            => $nib,
+            'id_balita'       => $id_balita,
             'nama_lengkap'    => $nama_lengkap,
             'tempat_lahir'  => $tempat_lahir,
             'tanggal_lahir' => $tanggal_lahir,

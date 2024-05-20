@@ -17,12 +17,14 @@ class Report extends CI_Controller
         $this->load->model('M_penimbangan');
         $this->load->model('M_balita');
         $this->load->model('M_kematian');
+        $this->load->model('M_imunisasi');
     }
 
     public function balita()
     {
         $data['page'] = 'Laporan Balita';
         $data['balita'] = $this->M_balita->get_data();
+        $data['id_balita'] = $this->input->get('id_balita');
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar');
         $this->load->view('layout/navbar');
@@ -30,10 +32,11 @@ class Report extends CI_Controller
         // $this->load->view('layout/footer');
     }
 
-    public function kematian()
+    public function Kematian()
     {
         $data['page'] = 'Laporan Kematian';
         $data['balita'] = $this->M_balita->get_data();
+        $data['id_balita'] = $this->input->get('id_balita');
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar');
         $this->load->view('layout/navbar');
@@ -51,8 +54,105 @@ class Report extends CI_Controller
         echo json_encode($dataBalita); // Kirim sebagai respons
     }
 
+    //get balita
+    public function fetch_data_kematian()
+    {
+        $id_balita = $this->input->post('id_balita');
+
+        $dataBalita = $this->M_kematian->getdatabyid($id_balita);
+
+        echo json_encode($dataBalita); // Kirim sebagai respons
+    }
+
+    //imunisasi
+    public function viewRekapImunisasi()
+    {
+        $id_balita = $this->input->get('id_balita');
+        $data['page'] = 'Laporan Imunisasi Balita';
+
+        if ($id_balita > 0) {
+            $id_balita = $this->input->get('id_balita');
+            $data['id_balita'] = $this->input->get('id_balita');
+            $data['imunisasi'] = $this->M_imunisasi->getbyBalita($id_balita);
+        } else {
+            $id_balita = $this->input->get('id_balita');
+            $data['id_balita'] = $this->input->get('id_balita');
+            $data['imunisasi'] = $this->M_imunisasi->get_data();
+        }
+
+        // Load library DOMPDF
+        $this->load->library('pdf');
+
+        // Set paper size and orientation
+        $this->pdf->setPaper('A4', 'landscape');
+
+        // Set filename
+        $this->pdf->filename = "Laporan Rekap Imunisasi.pdf";
+
+        // Load the view and create PDF
+        $this->pdf->load_view('content/Laporan/Balita/rekap_imunisasi_v', $data);
+    }
+
 
     //**Balita */
+
+    public function viewRekap()
+    {
+        $id_balita = $this->input->get('id_balita');
+        $data['page'] = 'Laporan Balita';
+
+        if ($id_balita > 0) {
+            $id_balita = $this->input->get('id_balita');
+            $data['id_balita'] = $this->input->get('id_balita');
+            $data['balita'] = $this->M_balita->print($id_balita);
+        } else {
+            $id_balita = $this->input->get('id_balita');
+            $data['id_balita'] = $this->input->get('id_balita');
+            $data['balita'] = $this->M_balita->get_data();
+        }
+
+        // Load library DOMPDF
+        $this->load->library('pdf');
+
+        // Set paper size and orientation
+        $this->pdf->setPaper('A4', 'landscape');
+
+        // Set filename
+        $this->pdf->filename = "Laporan Balita.pdf";
+
+        // Load the view and create PDF
+        $this->pdf->load_view('content/Laporan/Balita/rekap_v', $data);
+    }
+
+
+    public function viewAnalys()
+    {
+        $id_balita = $this->input->get('id_balita');
+        $data['page'] = 'Laporan Analisis Stunting';
+
+        if ($id_balita > 0) {
+            $id_balita = $this->input->get('id_balita');
+            $data['id_balita'] = $this->input->get('id_balita');
+            $data['balita'] = $this->M_balita->print($id_balita);
+        } else {
+            $id_balita = $this->input->get('id_balita');
+            $data['id_balita'] = $this->input->get('id_balita');
+            $data['balita'] = $this->M_balita->get_data();
+        }
+
+        // Load library DOMPDF
+        $this->load->library('pdf');
+
+        // Set paper size and orientation
+        $this->pdf->setPaper('A4', 'landscape');
+
+        // Set filename
+        $this->pdf->filename = "Laporan Balita.pdf";
+
+        // Load the view and create PDF
+        // $this->pdf->load_view('content/Laporan/Balita/analisis_v.php', $data);
+        $this->load->view('content/Laporan/Balita/analisis_v.php', $data);
+    }
 
     public function viewBalita()
     {
@@ -63,7 +163,7 @@ class Report extends CI_Controller
         if ($id_balita > 0) {
             $id_balita = $this->input->get('id_balita');
             $data['id_balita'] = $this->input->get('id_balita');
-            $data['balita'] = $this->M_balita->print($id_balita);
+            $data['balita'] = $this->M_balita->view($id_balita);
 
             $this->load->view('layout/header');
             $this->load->view('layout/sidebar');
@@ -91,7 +191,7 @@ class Report extends CI_Controller
         if ($id_balita > 0) {
             $id_balita = $this->input->get('id_balita');
             $data['id_balita'] = $this->input->get('id_balita');
-            $data['balita'] = $this->M_balita->print($id_balita);
+            $data['balita'] = $this->M_balita->view($id_balita);
         } else {
             $id_balita = $this->input->get('id_balita');
             $data['id_balita'] = $this->input->get('id_balita');
@@ -143,7 +243,7 @@ class Report extends CI_Controller
             ]
         ];
         $sheet->setCellValue('A1', "LAPORAN DATA BALITA"); // Set kolom A1 dengan tulisan "DATA SISWA"
-        $sheet->mergeCells('A1:I1'); // Set Merge Cell pada kolom A1 sampai E1
+        $sheet->mergeCells('A1:M1'); // Set Merge Cell pada kolom A1 sampai E1
         $sheet->getStyle('A1')->getFont()->setBold(true); // Set bold kolom A1
         // Buat header tabel nya pada baris ke 3
         $sheet->setCellValue('A3', "NO"); // Set kolom A3 dengan tulisan "NO"
@@ -154,6 +254,13 @@ class Report extends CI_Controller
         $sheet->setCellValue('F3', "USIA");
         $sheet->setCellValue('G3', "NAMA AYAH");
         $sheet->setCellValue('H3', "NAMA IBU");
+        $sheet->setCellValue('I3', "BERAT BADAN");
+        $sheet->setCellValue('J3', "TINGGI BADAN");
+        $sheet->setCellValue('K3', "LINGKAR KEPALA");
+        $sheet->setCellValue('L3', "LINGKAR PERUT");
+        $sheet->setCellValue('M3', "KETERANGAN");
+
+
 
         // Apply style header yang telah kita buat tadi ke masing-masing kolom header
         $sheet->getStyle('A3')->applyFromArray($style_col);
@@ -164,7 +271,12 @@ class Report extends CI_Controller
         $sheet->getStyle('F3')->applyFromArray($style_col);
         $sheet->getStyle('G3')->applyFromArray($style_col);
         $sheet->getStyle('H3')->applyFromArray($style_col);
-        // $sheet->getStyle('I3')->applyFromArray($style_col);
+        $sheet->getStyle('I3')->applyFromArray($style_col);
+        $sheet->getStyle('J3')->applyFromArray($style_col);
+        $sheet->getStyle('K3')->applyFromArray($style_col);
+        $sheet->getStyle('L3')->applyFromArray($style_col);
+        $sheet->getStyle('M3')->applyFromArray($style_col);
+
         // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
 
         $id_balita = $this->input->get('id_balita');
@@ -187,11 +299,17 @@ class Report extends CI_Controller
             $sheet->setCellValue('A' . $numrow, $no);
             $sheet->setCellValue('B' . $numrow, $data->nib);
             $sheet->setCellValue('C' . $numrow, $data->nama_lengkap);
-            $sheet->setCellValue('D' . $numrow, $data->tempat_lahir . ", " . $data->tempat_lahir);
+            $sheet->setCellValue('D' . $numrow, $data->tempat_lahir . ", " . $data->tanggal_lahir);
             $sheet->setCellValue('E' . $numrow, $data->jenis_kelamin);
-            $sheet->setCellValue('F' . $numrow, $data->usia);
+            $sheet->setCellValue('F' . $numrow, $data->usia . 'Bulan');
             $sheet->setCellValue('G' . $numrow, $data->nama_ayah);
             $sheet->setCellValue('H' . $numrow, $data->nama_ibu);
+            $sheet->setCellValue('I' . $numrow, $data->berat_badan . 'Kg');
+            $sheet->setCellValue('J' . $numrow, $data->tinggi_badan . 'cm');
+            $sheet->setCellValue('K' . $numrow, $data->lingkar_kepala . 'cm');
+            $sheet->setCellValue('L' . $numrow, $data->lingkar_perut . 'cm');
+            $sheet->setCellValue('M' . $numrow, $data->keterangan);
+
             // if ($data->status_bayar == 1) {
             // 	$sheet->setCellValue('I' . $numrow, 'dibayar');
             // } else {
@@ -206,6 +324,12 @@ class Report extends CI_Controller
             $sheet->getStyle('F' . $numrow)->applyFromArray($style_row);
             $sheet->getStyle('G' . $numrow)->applyFromArray($style_row);
             $sheet->getStyle('H' . $numrow)->applyFromArray($style_row);
+            $sheet->getStyle('I' . $numrow)->applyFromArray($style_row);
+            $sheet->getStyle('J' . $numrow)->applyFromArray($style_row);
+            $sheet->getStyle('K' . $numrow)->applyFromArray($style_row);
+            $sheet->getStyle('L' . $numrow)->applyFromArray($style_row);
+            $sheet->getStyle('M' . $numrow)->applyFromArray($style_row);
+
             // $sheet->getStyle('I' . $numrow)->applyFromArray($style_row);
 
 
@@ -221,6 +345,12 @@ class Report extends CI_Controller
         $sheet->getColumnDimension('F')->setWidth(30);
         $sheet->getColumnDimension('G')->setWidth(30);
         $sheet->getColumnDimension('H')->setWidth(30);
+        $sheet->getColumnDimension('I')->setWidth(30);
+        $sheet->getColumnDimension('J')->setWidth(30);
+        $sheet->getColumnDimension('K')->setWidth(30);
+        $sheet->getColumnDimension('L')->setWidth(30);
+        $sheet->getColumnDimension('M')->setWidth(30);
+
         // $sheet->getColumnDimension('I')->setWidth(30);
 
 
@@ -246,7 +376,7 @@ class Report extends CI_Controller
         if ($id_balita > 0) {
             $id_balita = $this->input->get('id_balita');
             $data['id_balita'] = $this->input->get('id_balita');
-            $data['balita'] = $this->M_balita->print($id_balita);
+            $data['balita'] = $this->M_balita->view($id_balita);
         } else {
             $id_balita = $this->input->get('id_balita');
             $data['id_balita'] = $this->input->get('id_balita');
@@ -351,13 +481,13 @@ class Report extends CI_Controller
         $sheet->getStyle('A1')->getFont()->setBold(true); // Set bold kolom A1
         // Buat header tabel nya pada baris ke 3
         $sheet->setCellValue('A3', "NO"); // Set kolom A3 dengan tulisan "NO"
-        $sheet->setCellValue('B3', "NIB"); // Set kolom B3 dengan tulisan "NIS"
-        $sheet->setCellValue('C3', "NAMA LENGKAP"); // Set kolom C3 dengan tulisan "NAMA"
-        $sheet->setCellValue('D3', "TEMPAT, TANGGAL LAHIR"); // Set kolom D3 dengan tulisan "JENIS KELAMIN"
-        $sheet->setCellValue('E3', "ALAMAT");
-        $sheet->setCellValue('F3', "KETERANGAN");
-        // $sheet->setCellValue('G3', "NAMA AYAH");
-        // $sheet->setCellValue('H3', "NAMA IBU");
+        $sheet->setCellValue('B3', "TGL KEMATIAN"); // Set kolom B3 dengan tulisan "NIS"
+        $sheet->setCellValue('C3', "NIB"); // Set kolom B3 dengan tulisan "NIS"
+        $sheet->setCellValue('D3', "NAMA LENGKAP"); // Set kolom C3 dengan tulisan "NAMA"
+        $sheet->setCellValue('E3', "TEMPAT, TANGGAL LAHIR"); // Set kolom D3 dengan tulisan "JENIS KELAMIN"
+        $sheet->setCellValue('F3', "ALAMAT");
+        $sheet->setCellValue('G3', "KETERANGAN");
+        // $sheet->setCellValue('H3', "NAMA AYAH");
 
         // Apply style header yang telah kita buat tadi ke masing-masing kolom header
         $sheet->getStyle('A3')->applyFromArray($style_col);
@@ -366,7 +496,7 @@ class Report extends CI_Controller
         $sheet->getStyle('D3')->applyFromArray($style_col);
         $sheet->getStyle('E3')->applyFromArray($style_col);
         $sheet->getStyle('F3')->applyFromArray($style_col);
-        // $sheet->getStyle('G3')->applyFromArray($style_col);
+        $sheet->getStyle('G3')->applyFromArray($style_col);
         // $sheet->getStyle('H3')->applyFromArray($style_col);
         // $sheet->getStyle('I3')->applyFromArray($style_col);
         // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
@@ -389,12 +519,13 @@ class Report extends CI_Controller
         $numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
         foreach ($data['kematian'] as $data) { // Lakukan looping pada variabel siswa
             $sheet->setCellValue('A' . $numrow, $no);
-            $sheet->setCellValue('B' . $numrow, $data->nib);
-            $sheet->setCellValue('C' . $numrow, $data->nama_lengkap);
-            $sheet->setCellValue('D' . $numrow, $data->tempat_lahir . ", " . $data->tempat_lahir);
-            $sheet->setCellValue('E' . $numrow, $data->alamat);
-            $sheet->setCellValue('F' . $numrow, $data->keterangan);
-            // $sheet->setCellValue('G' . $numrow, $data->nama_ayah);
+            $sheet->setCellValue('B' . $numrow, $data->tgl_kematian);
+            $sheet->setCellValue('C' . $numrow, $data->nib);
+            $sheet->setCellValue('D' . $numrow, $data->nama_lengkap);
+            $sheet->setCellValue('E' . $numrow, $data->tempat_lahir . ", " . $data->tanggal_lahir);
+            $sheet->setCellValue('F' . $numrow, $data->alamat);
+            $sheet->setCellValue('G' . $numrow, $data->keterangan);
+            // $sheet->setCellValue('H' . $numrow, $data->nama_ayah);
             // $sheet->setCellValue('H' . $numrow, $data->nama_ibu);
             // if ($data->status_bayar == 1) {
             // 	$sheet->setCellValue('I' . $numrow, 'dibayar');
@@ -408,7 +539,7 @@ class Report extends CI_Controller
             $sheet->getStyle('D' . $numrow)->applyFromArray($style_row);
             $sheet->getStyle('E' . $numrow)->applyFromArray($style_row);
             $sheet->getStyle('F' . $numrow)->applyFromArray($style_row);
-            // $sheet->getStyle('G' . $numrow)->applyFromArray($style_row);
+            $sheet->getStyle('G' . $numrow)->applyFromArray($style_row);
             // $sheet->getStyle('H' . $numrow)->applyFromArray($style_row);
             // $sheet->getStyle('I' . $numrow)->applyFromArray($style_row);
 
@@ -423,7 +554,7 @@ class Report extends CI_Controller
         $sheet->getColumnDimension('D')->setWidth(20);
         $sheet->getColumnDimension('E')->setWidth(30);
         $sheet->getColumnDimension('F')->setWidth(30);
-        // $sheet->getColumnDimension('G')->setWidth(30);
+        $sheet->getColumnDimension('G')->setWidth(30);
         // $sheet->getColumnDimension('H')->setWidth(30);
         // $sheet->getColumnDimension('I')->setWidth(30);
 
@@ -445,18 +576,18 @@ class Report extends CI_Controller
     public function printKematian()
     {
         $id_balita = $this->input->get('id_balita');
-        $data['page'] = 'Laporan Balita';
+        $data['page'] = 'Laporan Kematian';
 
         if ($id_balita > 0) {
             $id_balita = $this->input->get('id_balita');
             $data['id_balita'] = $this->input->get('id_balita');
-            $data['balita'] = $this->M_balita->print($id_balita);
+            $data['kematian'] = $this->M_kematian->print($id_balita);
         } else {
             $id_balita = $this->input->get('id_balita');
             $data['id_balita'] = $this->input->get('id_balita');
-            $data['balita'] = $this->M_balita->get_data();
+            $data['kematian'] = $this->M_kematian->get_data();
         }
         // Load the view 
-        $this->load->view('content/Laporan/Balita/print', $data);
+        $this->load->view('content/Laporan/Kematian/print', $data);
     }
 }

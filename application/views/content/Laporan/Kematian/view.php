@@ -26,7 +26,7 @@
         </div>
         <div class="container">
           <form action="<?= base_url() ?>report/kematian/cetak" method="get">
-            <td><input type="text" hidden name="id_balita" id="id_balita" class="form-control form-control-sm my-2 border-dark" value="<?php echo $id_balita ?>" required readonly></td>
+            <td><input type="text" required hidden name="id_balita" id="id_balita" class="form-control form-control-sm my-2 border-dark" value="<?php echo $id_balita ?>" required readonly></td>
             <h3>
               <center>LAPORAN KEMATIAN</center>
             </h3>
@@ -34,6 +34,7 @@
               <thead>
                 <tr>
                   <th>No</th>
+                  <th>Tanggal Kematian</th>
                   <th>NIB</th>
                   <th>Nama Lengkap</th>
                   <th>Tempat Tanggal Lahir</th>
@@ -49,6 +50,7 @@
                 ?>
                   <tr>
                     <td><?= $no ?></td>
+                    <td><?= $val->tgl_kematian ?></td>
                     <td><?= $val->nib ?></td>
                     <td><?= $val->nama_lengkap ?></td>
                     <td><?= $val->tempat_lahir ?> , <?= $val->tanggal_lahir ?></td>
@@ -56,6 +58,10 @@
                     <td><?= $val->keterangan ?></td>
                   </tr>
                 <?php } ?>
+                <?php
+                if ($kematian < 0) {
+                  echo  "<td colspan='8' class='text-center'>tidak ada data</td>";
+                } ?>
 
               </tbody>
             </table>

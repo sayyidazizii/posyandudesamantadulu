@@ -37,7 +37,7 @@
                         <td><?= $val->nama_lengkap ?></td>
                         <td><?= $val->tempat_lahir ?> , <?= $val->tanggal_lahir ?></td>
                         <td><?= $val->jenis_kelamin ?></td>
-                        <td><?= $val->usia ?> th</td>
+                        <td><?= $val->usia ?> Bulan</td>
                         <td><?= $val->nama_ayah ?></td>
                         <td><?= $val->nama_ibu ?></td>
                     </tr>

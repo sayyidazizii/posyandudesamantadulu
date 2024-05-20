@@ -38,15 +38,15 @@
                   </select>
                 </td>
               </tr>
-              <td><input type="text" hidden name="nib" id="nib" class="form-control form-control-sm my-2 border-dark" required readonly></td>
+              <td><input type="text" required hidden name="nib" id="nib" class="form-control form-control-sm my-2 border-dark" required readonly></td>
 
               <tr>
                 <th>Nama Lengkap</th>
-                <td><input type="text" name="nama_lengkap" id="nama_lengkap" class="form-control form-control-sm my-2 border-dark" required readonly></td>
+                <td><input type="text" required oninput="validateText(this)" name="nama_lengkap" id="nama_lengkap" class="form-control form-control-sm my-2 border-dark" required readonly></td>
               </tr>
               <tr>
                 <th>Tempat Lahir</th>
-                <td><input type="text" name="tempat_lahir" id="tempat_lahir" class="form-control form-control-sm my-2 border-dark" readonly></td>
+                <td><input type="text" required oninput="validateText(this)" name="tempat_lahir" id="tempat_lahir" class="form-control form-control-sm my-2 border-dark" readonly></td>
               </tr>
               <tr>
                 <th>Tanggal Lahir</th>
@@ -54,7 +54,7 @@
               </tr>
               <tr>
                 <th>Jenis Kelamin</th>
-                <td><input type="text" name="jenis_kelamin" id="jenis_kelamin" class="form-control form-control-sm my-2 border-dark" readonly></td>
+                <td><input type="text" required oninput="validateText(this)" name="jenis_kelamin" id="jenis_kelamin" class="form-control form-control-sm my-2 border-dark" readonly></td>
               </tr>
               <tr>
                 <th>Tanggal kematian</th>
@@ -62,11 +62,11 @@
               </tr>
               <tr>
                 <th>Alamat</th>
-                <td><textarea type="text" name="alamat" id="alamat" class="form-control form-control-sm my-2 border-dark"></textarea></td>
+                <td><textarea type="text" oninput="validateText(this)" name="alamat" id="alamat" class="form-control form-control-sm my-2 border-dark"></textarea></td>
               </tr>
               <tr>
                 <th>Keterangan</th>
-                <td><input type="text" name="keterangan" id="keterangan" class="form-control form-control-sm my-2 border-dark"></td>
+                <td><input type="text" required name="keterangan" id="keterangan" class="form-control form-control-sm my-2 border-dark"></td>
               </tr>
               <tr>
                 <th></th>
@@ -81,6 +81,15 @@
   <!--Row-->
 </div>
 <!---Container Fluid-->
+<script>
+  function validateText(input) {
+    input.value = input.value.replace(/[^A-Za-z]/g, '');
+  }
+
+  function validateNumber(input) {
+    input.value = input.value.replace(/\D/g, '');
+  }
+</script>
 </div>
 <!-- Scroll to top -->
 <a class="scroll-to-top rounded" href="#page-top">
