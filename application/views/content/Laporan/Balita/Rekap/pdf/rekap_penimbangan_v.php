@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Laporan Kematian</title>
+    <title>cetak laporan rekap penimbangan balita</title>
     <style>
         .logo {
             width: 50px;
@@ -66,50 +66,56 @@
     <img src="<?php echo $logo1 ?>" class="logo logo-left">
     <img src="<?php echo $logo2 ?>" class="logo logo-right">
     <br><br><br>
-    <form action="<?= base_url() ?>report/kematian/cetak" method="get">
-        <input type="hidden" name="id_balita" id="id_balita" value="<?php echo $id_balita ?>">
+    <form action="<?= base_url() ?>report/balita/cetak" method="get">
         <h3 class="header-text">
-            LAPORAN DATA KEMATIAN
+            LAPORAN REKAP DATA PENIMBANGAN BALITA
         </h3>
         <h3 class="sub-header-text">
             POSYANDU DESA MANTADULU
+            <center><?= $start_date ?> - <?= $end_date ?></center>
         </h3>
+        <br>
         <br>
         <hr>
         <br>
+
         <table border="1" cellspacing="0" cellpadding="5" width="100%">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Tanggal Kematian</th>
                     <th>NIB</th>
+                    <th>Tanggal Penimbangan</th>
                     <th>Nama Lengkap</th>
-                    <th>Tempat Tanggal Lahir</th>
-                    <th>Alamat</th>
-                    <th>Keterangan</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Usia</th>
+                    <th>Berat Badan</th>
+                    <th>Tinggi Badan</th>
+                    <th>Lingkar Kepala</th>
+                    <th>Lingkar Perut</th>
+                    <th>Ket</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 $no = 0;
-                foreach ($kematian as $val) {
+                foreach ($penimbangan as $val) {
                     $no++
                 ?>
                     <tr>
                         <td><?= $no ?></td>
-                        <td><?= $val->tgl_kematian ?></td>
                         <td><?= $val->nib ?></td>
+                        <td><?= $val->tgl_penimbangan ?></td>
                         <td><?= $val->nama_lengkap ?></td>
-                        <td><?= $val->tempat_lahir ?> , <?= $val->tanggal_lahir ?></td>
-                        <td><?= $val->alamat ?></td>
+                        <td><?= $val->tanggal_lahir ?></td>
+                        <td><?= $val->usia ?>Bulan</td>
+                        <td><?= $val->berat_badan ?> Kg</td>
+                        <td><?= $val->tinggi_badan ?> cm</td>
+                        <td><?= $val->lingkar_kepala ?> cm</td>
+                        <td><?= $val->lingkar_perut ?> cm</td>
                         <td><?= $val->keterangan ?></td>
                     </tr>
                 <?php } ?>
-                <?php
-                if ($kematian < 0) {
-                    echo  "<td colspan='8' class='text-center'>tidak ada data</td>";
-                } ?>
-                ?>
+
             </tbody>
         </table>
 

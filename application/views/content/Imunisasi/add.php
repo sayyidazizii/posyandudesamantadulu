@@ -80,8 +80,16 @@
                             </tr>
                             <tr>
                                 <th>Imunisasi</th>
-                                <td><input type="text" required oninput="validateText(this)" name="imunisasi" id="imunisasi" class="form-control form-control-sm my-2 border-dark" required></td>
+                                <td>
+                                    <select class="select2-single-placeholder form-control" name="imunisasi" id="imunisasi" required>
+                                        <option value="">Select</option>
+                                        <?php foreach ($list_imunisasi as $key => $val) { ?>
+                                            <option value="<?= $val ?>"><?= $val ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </td>
                             </tr>
+
                             <tr>
                                 <th>Vitamin A</th>
                                 <td>
@@ -125,6 +133,7 @@
 
     function cancel() {
         $('#id_balita').select2('val', 0);
+        $('#imunisasi').select2('val', 0);
     }
     // function validateNumber(input) {
     //     input.value = input.value.replace(/\D/g, '');

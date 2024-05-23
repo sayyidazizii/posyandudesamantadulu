@@ -28,9 +28,9 @@
           <form action="<?= base_url() ?>report/kematian/cetak" method="get">
             <td><input type="text" required hidden name="id_balita" id="id_balita" class="form-control form-control-sm my-2 border-dark" value="<?php echo $id_balita ?>" required readonly></td>
             <h3>
-              <center>LAPORAN KEMATIAN</center>
+              <center>LAPORAN DATA KEMATIAN</center>
             </h3>
-            <table border="1" cellspacing="0" cellpadding="5" width="100%">
+            <table border="1" cellspacing="0" cellpadding="5" width="100%" class="table align-items-center table-flush table-hover" id="dataTableHover">
               <thead>
                 <tr>
                   <th>No</th>

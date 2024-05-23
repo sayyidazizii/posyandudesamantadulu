@@ -227,6 +227,27 @@
             });
         }
     });
+    // // Event listener untuk setiap input yang digunakan dalam perhitungan keterangan
+    // $('#usia, #berat_badan, #tinggi_badan, #lingkar_kepala, #lingkar_perut').on('input', function() {
+    //     // Mendapatkan nilai dari setiap input
+    //     // var usia = parseFloat($('#usia').val());
+    //     var berat_badan = parseFloat($('#berat_badan').val());
+    //     var tinggi_badan = parseFloat($('#tinggi_badan').val());
+    //     var lingkar_kepala = parseFloat($('#lingkar_kepala').val());
+    //     var lingkar_perut = parseFloat($('#lingkar_perut').val());
+
+    //     // Menyusun keterangan
+    //     var keterangan = "Hasil Penimbangan "
+    //         // ", Usia = " + usia + " bulan, " 
+    //         +
+    //         "BB = " + berat_badan + " kg, " +
+    //         "TB = " + tinggi_badan + " cm, " +
+    //         "LK = " + lingkar_kepala + " cm, " +
+    //         "LP = " + lingkar_perut + " cm.";
+
+    //     // Isi input keterangan dengan nilai yang sudah disusun
+    //     $('#keterangan').val(keterangan);
+    // });
 </script>
 </body>
 

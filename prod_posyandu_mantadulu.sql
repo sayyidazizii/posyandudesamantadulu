@@ -12,7 +12,7 @@ MySQL - 8.0.30 : Database - prod_posyandu_mantadulu
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`prod_posyandu_mantadulu` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`prod_posyandu_mantadulu` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `prod_posyandu_mantadulu`;
 
@@ -60,10 +60,10 @@ CREATE TABLE `tbl_balita` (
 /*Data for the table `tbl_balita` */
 
 insert  into `tbl_balita`(`id_balita`,`nib`,`nama_lengkap`,`tempat_lahir`,`tanggal_lahir`,`jenis_kelamin`,`usia`,`nama_ayah`,`nama_ibu`,`data_state`,`created_at`,`updated_at`) values 
-(1,'B0001','Haerul Fatah','Mantadulu','2019-01-23','laki-laki','60','Muh. supardi','Sariah',0,NULL,NULL),
+(1,'B0001','Haerul Fatah','Mantadulu','2019-01-23','laki-laki','63','Muh. supardi','Sariah',0,NULL,NULL),
 (3,'B0002','luthfi marwan','Karanganyar','2024-05-09','laki-laki','13','Teguh','Dwi',1,NULL,NULL),
 (4,'B0003','Seahy Dashwa','Mantadulu','2019-02-19','perempuan','62','Syarifuddin','Darmawati',0,NULL,NULL),
-(5,'B0004','Mazruil Ezzar Syaqif','Mantadulu','2019-04-09','perempuan','1','Suparlan','Mariana',0,NULL,NULL),
+(5,'B0004','Mazruil Ezzar Syaqif','Mantadulu','2019-04-09','perempuan','60','Suparlan','Mariana',0,NULL,NULL),
 (6,'B0005','fdfd','Mantadulu','2022-02-15','perempuan','1','fs','fgf',1,NULL,NULL),
 (7,'B0006','ayu','Mantadulu','2024-05-19','perempuan','59','Muhsupardi','Mariana',1,NULL,NULL);
 
@@ -82,14 +82,16 @@ CREATE TABLE `tbl_imunisasi` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id_imunisasi`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tbl_imunisasi` */
 
 insert  into `tbl_imunisasi`(`id_imunisasi`,`tgl_imunisasi`,`id_balita`,`imunisasi`,`vitamin`,`keterangan`,`data_state`,`created_at`,`updated_at`) values 
 (1,'2024-05-10',1,'polio','merah','vaksin polio\r\n',0,NULL,NULL),
 (2,'2024-05-10',1,'polio','biru','imunisasi polio',1,NULL,NULL),
-(3,'2024-05-10',4,'BCG Polio','biru','Imunisasi BCG Polio',0,NULL,NULL);
+(3,'2024-05-10',4,'BCG Polio','biru','Imunisasi BCG Polio',0,NULL,NULL),
+(4,'2024-05-22',1,'DPT-HB','biru','normal',0,NULL,NULL),
+(5,'2024-05-23',1,'BCG','biru','-',0,NULL,NULL);
 
 /*Table structure for table `tbl_kader` */
 
@@ -140,8 +142,7 @@ CREATE TABLE `tbl_kematian` (
 
 insert  into `tbl_kematian`(`id_kematian`,`id_balita`,`nib`,`nama_lengkap`,`tempat_lahir`,`tanggal_lahir`,`tgl_kematian`,`jenis_kelamin`,`keterangan`,`alamat`,`data_state`,`created_at`,`updated_at`) values 
 (2,1,'B0001','Haerul Fatah','Mantadulu','2019-01-23','2023-02-11','laki-laki','Meninggal','Dsn. Campur Jaya, Desa Mantadulu',0,NULL,NULL),
-(3,4,'B0003','Seahy Dashwa','Mantadulu','2019-02-19','2024-05-19','perempuan','meninggal','  mantadulu',0,NULL,NULL),
-(5,8,'B0007','Ulik','Mantadulu','2024-05-19','2024-05-19','perempuan','meninggal','mantadulu',0,NULL,NULL);
+(3,4,'B0003','Seahy Dashwa','Mantadulu','2019-02-19','2024-05-19','perempuan','meninggal','  mantadulu',0,NULL,NULL);
 
 /*Table structure for table `tbl_penimbangan` */
 
@@ -151,25 +152,26 @@ CREATE TABLE `tbl_penimbangan` (
   `id_timbangan` int NOT NULL AUTO_INCREMENT,
   `tgl_penimbangan` date DEFAULT NULL,
   `id_balita` int DEFAULT NULL,
-  `berat_badan` decimal(20,2) DEFAULT NULL,
-  `tinggi_badan` decimal(20,2) DEFAULT NULL,
-  `lingkar_kepala` decimal(20,2) DEFAULT NULL,
-  `lingkar_perut` decimal(20,2) DEFAULT NULL,
+  `berat_badan` decimal(20,1) DEFAULT NULL,
+  `tinggi_badan` decimal(20,1) DEFAULT NULL,
+  `lingkar_kepala` decimal(20,1) DEFAULT NULL,
+  `lingkar_perut` decimal(20,1) DEFAULT NULL,
   `keterangan` text COLLATE utf8mb4_general_ci,
   `data_state` int DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id_timbangan`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tbl_penimbangan` */
 
 insert  into `tbl_penimbangan`(`id_timbangan`,`tgl_penimbangan`,`id_balita`,`berat_badan`,`tinggi_badan`,`lingkar_kepala`,`lingkar_perut`,`keterangan`,`data_state`,`created_at`,`updated_at`) values 
-(1,'2024-02-01',1,14.50,95.50,47.00,30.00,'Normal',0,NULL,NULL),
-(2,'2024-05-10',1,20.00,20.00,20.00,20.00,'normal',1,NULL,NULL),
-(3,'2024-05-10',4,185.00,175.00,20.00,25.00,'Normal',0,NULL,NULL),
-(4,'2024-05-19',4,20.22,20.00,20.00,20.00,'normal',0,NULL,NULL),
-(5,'2024-05-19',1,20.22,45.00,20.00,20.00,'penimbangan',0,NULL,NULL);
+(1,'2024-02-01',1,14.3,95.5,47.0,30.0,'normal',0,NULL,NULL),
+(2,'2024-05-10',1,20.0,20.0,20.0,20.0,'normal',1,NULL,NULL),
+(3,'2024-05-10',4,185.0,175.0,20.0,25.0,'Normal',0,NULL,NULL),
+(4,'2024-05-19',4,20.2,20.0,20.0,20.0,'normal',0,NULL,NULL),
+(5,'2024-05-19',1,20.2,45.0,20.0,20.0,'penimbangan',0,NULL,NULL),
+(6,'2024-05-23',5,20.0,45.0,25.0,24.1,'normal',0,NULL,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

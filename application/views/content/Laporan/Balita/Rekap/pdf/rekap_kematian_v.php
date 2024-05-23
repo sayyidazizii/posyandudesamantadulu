@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Laporan Kematian</title>
+    <title>cetak laporan rekap kematian balita</title>
     <style>
         .logo {
             width: 50px;
@@ -66,14 +66,15 @@
     <img src="<?php echo $logo1 ?>" class="logo logo-left">
     <img src="<?php echo $logo2 ?>" class="logo logo-right">
     <br><br><br>
-    <form action="<?= base_url() ?>report/kematian/cetak" method="get">
-        <input type="hidden" name="id_balita" id="id_balita" value="<?php echo $id_balita ?>">
+    <form action="<?= base_url() ?>report/balita/cetak" method="get">
         <h3 class="header-text">
-            LAPORAN DATA KEMATIAN
+            LAPORAN REKAP DATA KEMATIAN BALITA
         </h3>
         <h3 class="sub-header-text">
             POSYANDU DESA MANTADULU
+            <center><?= $start_date ?> - <?= $end_date ?></center>
         </h3>
+        <br>
         <br>
         <hr>
         <br>
@@ -105,11 +106,7 @@
                         <td><?= $val->keterangan ?></td>
                     </tr>
                 <?php } ?>
-                <?php
-                if ($kematian < 0) {
-                    echo  "<td colspan='8' class='text-center'>tidak ada data</td>";
-                } ?>
-                ?>
+
             </tbody>
         </table>
 

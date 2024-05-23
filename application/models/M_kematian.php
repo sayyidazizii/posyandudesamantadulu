@@ -58,4 +58,24 @@ class M_kematian extends CI_Model
         $this->db->where('tbl_kematian.data_state', 0);
         return $this->db->get()->row();
     }
+
+    public function get_all_rekap_kematian()
+    {
+        $this->db->select('tbl_kematian.*, tbl_balita.*');
+        $this->db->from($this->table);
+        $this->db->join('tbl_balita', 'tbl_balita.id_balita = tbl_kematian.id_balita');
+        $this->db->where('tbl_kematian.data_state', 0);
+        return $this->db->get()->result();
+    }
+
+    public function all_rekap_kematian($start_date, $end_date)
+    {
+        $this->db->select('tbl_kematian.*, tbl_balita.*');
+        $this->db->from($this->table);
+        $this->db->join('tbl_balita', 'tbl_balita.id_balita = tbl_kematian.id_balita');
+        $this->db->where('tbl_kematian.tgl_kematian >=', $start_date);
+        $this->db->where('tbl_kematian.tgl_kematian <=', $end_date);
+        $this->db->where('tbl_kematian.data_state', 0);
+        return $this->db->get()->result();
+    }
 }

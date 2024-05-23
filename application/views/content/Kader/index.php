@@ -59,8 +59,8 @@
                             <td><?= $val->lama_kerja ?> <?= $val->type ?></td>
                             <td>
                               <div class="d-flex flex-nowrap ">
-                                <a href="<?= base_url() ?>kader/edit/<?= $val->id_kader ?>" class="btn btn-sm btn-warning mx-2"><i class="fas fa-pen"></i></a>
-                                <a href="<?= base_url() ?>kader/delete/<?= $val->id_kader ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fas fa-trash"></i></a>
+                                <a href="<?= base_url() ?>kader/edit/<?= $val->id_kader ?>" title="Edit" class="btn btn-sm btn-warning mx-2"><i class="fas fa-pen"></i></a>
+                                <a href="<?= base_url() ?>kader/delete/<?= $val->id_kader ?>" title="Hapus" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fas fa-trash"></i></a>
                               </div>
                             </td>
                           </tr>

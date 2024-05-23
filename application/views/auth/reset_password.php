@@ -247,7 +247,7 @@
     <div class="row px-3">
         <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2024. All rights reserved.</small>
         <div class="social-contact ml-4 ml-sm-auto">
-            <h6 class="mr-4 mr-sm-5 text-sm">Ni Luh Ayu Masri Anggraeni</h6>
+            <h6 class="mr-4 mr-sm-5 text-sm">Ni Luh Ayu Masri Anggreni</h6>
         </div>
     </div>
 </div>

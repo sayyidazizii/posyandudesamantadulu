@@ -67,6 +67,8 @@
         <h6 class="collapse-header">laporan</h6>
         <a class="collapse-item" href="<?php echo base_url() ?>report/balita">Laporan Balita</a>
         <a class="collapse-item" href="<?php echo base_url() ?>report/kematian">Laporan Kematian</a>
+        <a class="collapse-item" href="<?php echo base_url() ?>report/rekapbalita">Rekap Data Balita</a>
+        <a class="collapse-item" href="<?php echo base_url() ?>report/rekapkematian">Rekap Data Kematian</a>
       </div>
     </div>
   </li>
@@ -77,6 +79,8 @@
     </a>
   </li>
   <hr class="sidebar-divider">
-  <div class="version" id="version-ruangadmin"></div>
+  <div class="version">
+    Copyright &copy; 2024. Ni Luh Ayu Masri Anggreni
+  </div>
 </ul>
 <!-- Sidebar -->

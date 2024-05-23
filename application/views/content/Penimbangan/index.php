@@ -46,7 +46,7 @@
                           <th>Tinggi Badan</th>
                           <th>Lingkar Kepala</th>
                           <th>Lingkar Perut</th>
-                          <th>Keterangan</th>
+                          <th width="30%">Keterangan</th>
                           <th>Aksi</th>
                         </tr>
                       </thead>
@@ -69,8 +69,8 @@
                             <td><?= $val->keterangan ?></td>
                             <td>
                               <div class="d-flex flex-nowrap ">
-                                <a href="<?= base_url() ?>penimbangan/edit/<?= $val->id_timbangan ?>" class="btn btn-sm btn-warning mx-2"><i class="fas fa-pen"></i></a>
-                                <a href="<?= base_url() ?>penimbangan/delete/<?= $val->id_timbangan ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fas fa-trash"></i></a>
+                                <a title="Edit" href="<?= base_url() ?>penimbangan/edit/<?= $val->id_timbangan ?>" class="btn btn-sm btn-warning mx-2"><i class="fas fa-pen"></i></a>
+                                <a title="Hapus" href="<?= base_url() ?>penimbangan/delete/<?= $val->id_timbangan ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fas fa-trash"></i></a>
                               </div>
                             </td>
                           </tr>

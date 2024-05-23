@@ -83,8 +83,18 @@
                             </tr>
                             <tr>
                                 <th>Imunisasi</th>
-                                <td><input type="text" required oninput="validateText(this)" name="imunisasi" id="imunisasi" class="form-control form-control-sm my-2 border-dark" value="<?php echo $imunisasi->imunisasi ?>" required></td>
+                                <td>
+                                    <select class="select2-single-placeholder form-control" name="imunisasi" id="imunisasi" required>
+                                        <option value="">Select</option>
+                                        <?php foreach ($list_imunisasi as $key => $val) { ?>
+                                            <option value="<?= $val ?>" <?= ($val == $imunisasi->imunisasi) ? 'selected' : '' ?>>
+                                                <?= $val ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
+                                </td>
                             </tr>
+
                             <tr>
                                 <th>Vitamin A</th>
                                 <td>
@@ -177,7 +187,7 @@
         $('.select2-single').select2();
 
         $('.select2-single-placeholder').select2({
-            placeholder: "Select a Province",
+            placeholder: "Select",
             allowClear: true
         });
 

@@ -30,6 +30,14 @@ class Imunisasi extends CI_Controller
 		$data['page'] = 'Input Data Imunisasi Balita';
 		$data['imunisasi'] = $this->M_imunisasi->get_data();
 		$data['balita'] = $this->M_balita->get_data();
+		$data['list_imunisasi'] = array(
+			'1' => 'Hepatitis B',
+			'2' => 'BCG',
+			'3' => 'Polio',
+			'4' => 'DPT-HB',
+			'5' => 'Campak'
+		);
+
 		$this->load->view('layout/header');
 		$this->load->view('layout/sidebar');
 		$this->load->view('layout/navbar');
@@ -91,7 +99,13 @@ class Imunisasi extends CI_Controller
 		$data['page'] = 'Edit Data Penimbangan';
 		$data['imunisasi'] = $this->M_imunisasi->getbyid($id_imunisasi);
 		$data['balita'] = $this->M_balita->get_data();
-
+		$data['list_imunisasi'] = array(
+			'1' => 'Hepatitis B',
+			'2' => 'BCG',
+			'3' => 'Polio',
+			'4' => 'DPT-HB',
+			'5' => 'Campak'
+		);
 
 		$this->load->view('layout/header');
 		$this->load->view('layout/sidebar');

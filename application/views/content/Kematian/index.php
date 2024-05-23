@@ -64,8 +64,8 @@
                             <td><?= $val->keterangan ?></td>
                             <td>
                               <div class="d-flex flex-nowrap ">
-                                <a href="<?= base_url() ?>kematian/edit/<?= $val->id_kematian ?>" class="btn btn-sm btn-warning mx-2"><i class="fas fa-pen"></i></a>
-                                <a href="<?= base_url() ?>kematian/delete/<?= $val->id_kematian ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fas fa-trash"></i></a>
+                                <a href="<?= base_url() ?>kematian/edit/<?= $val->id_kematian ?>" title="Edit" class="btn btn-sm btn-warning mx-2"><i class="fas fa-pen"></i></a>
+                                <a href="<?= base_url() ?>kematian/delete/<?= $val->id_kematian ?>" title="Hapus" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fas fa-trash"></i></a>
                               </div>
                             </td>
                           </tr>

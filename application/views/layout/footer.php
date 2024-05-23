@@ -2,10 +2,9 @@
 <footer class="sticky-footer bg-white">
   <div class="container my-auto">
     <div class="copyright text-center my-auto">
-      <span>copyright &copy; <script>
-          document.write(new Date().getFullYear());
-        </script>
-        <b></b>
+      Copyright &copy; 2024. Ni Luh Ayu Masri Anggreni
+      </script>
+      <b></b>
       </span>
     </div>
   </div>
@@ -59,6 +58,11 @@
 <!-- Page level custom scripts -->
 <script>
   $(document).ready(function() {
+    $(document).ready(function() {
+      // Initialize Bootstrap tooltip
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+
     $("#dataTable").DataTable(); // ID From dataTable
     $("#dataTableHover").DataTable(); // ID From dataTable with Hover
   });

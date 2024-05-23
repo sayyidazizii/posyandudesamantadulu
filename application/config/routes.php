@@ -143,3 +143,25 @@ $route['report/kematian/view']                          = 'Report/viewKematian';
 $route['report/kematian/cetak']                         = 'Report/CetakKematian';
 $route['report/kematian/export']                        = 'Report/exportKematian';
 $route['report/kematian/print']                         = 'Report/printKematian';
+
+//report all
+
+$route['report/rekapbalita']                                  = 'Report/rekap_all_balita';
+
+$route['report/rekappenimbangan']                             = 'Report/rekap_all_penimbangan';
+$route['report/rekappenimbangan/cetak']                       = 'Report/cetakRekapPenimbangan';
+$route['report/rekappenimbangan/export']                      = 'Report/exportRekapPenimbangan';
+$route['report/rekappenimbangan/print']                       = 'Report/printRekapPenimbangan';
+
+
+
+$route['report/rekapimunisasi']                             = 'Report/rekap_all_imunisasi';
+$route['report/rekapimunisasi/cetak']                       = 'Report/cetakRekapImunisasi';
+$route['report/rekapimunisasi/export']                      = 'Report/exportRekapImunisasi';
+$route['report/rekapimunisasi/print']                       = 'Report/printRekapImunisasi';
+
+
+$route['report/rekapkematian']                              = 'Report/rekap_all_kematian';
+$route['report/rekapkematian/cetak']                        = 'Report/cetakRekapKematian';
+$route['report/rekapkematian/export']                       = 'Report/exportRekapKematian';
+$route['report/rekapkematian/print']                        = 'Report/printRekapKematian';
