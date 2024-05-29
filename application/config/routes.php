@@ -146,22 +146,27 @@ $route['report/kematian/print']                         = 'Report/printKematian'
 
 //report all
 
-$route['report/rekapbalita']                                  = 'Report/rekap_all_balita';
+$route['report/rekapbalita']                                    = 'Report/rekap_all_balita';
 
-$route['report/rekappenimbangan']                             = 'Report/rekap_all_penimbangan';
-$route['report/rekappenimbangan/cetak']                       = 'Report/cetakRekapPenimbangan';
-$route['report/rekappenimbangan/export']                      = 'Report/exportRekapPenimbangan';
-$route['report/rekappenimbangan/print']                       = 'Report/printRekapPenimbangan';
+$route['report/rekapdatabalita']                                = 'Report/rekap_all_data_balita';
+$route['report/rekapdatabalita/cetak']                          = 'Report/cetakRekapDataBalita';
+$route['report/rekapdatabalita/export']                         = 'Report/exportRekapDataBalita';
+$route['report/rekapdatabalita/print']                          = 'Report/printRekapDataBalita';
 
-
-
-$route['report/rekapimunisasi']                             = 'Report/rekap_all_imunisasi';
-$route['report/rekapimunisasi/cetak']                       = 'Report/cetakRekapImunisasi';
-$route['report/rekapimunisasi/export']                      = 'Report/exportRekapImunisasi';
-$route['report/rekapimunisasi/print']                       = 'Report/printRekapImunisasi';
+$route['report/rekappenimbangan']                               = 'Report/rekap_all_penimbangan';
+$route['report/rekappenimbangan/cetak']                         = 'Report/cetakRekapPenimbangan';
+$route['report/rekappenimbangan/export']                        = 'Report/exportRekapPenimbangan';
+$route['report/rekappenimbangan/print']                         = 'Report/printRekapPenimbangan';
 
 
-$route['report/rekapkematian']                              = 'Report/rekap_all_kematian';
-$route['report/rekapkematian/cetak']                        = 'Report/cetakRekapKematian';
-$route['report/rekapkematian/export']                       = 'Report/exportRekapKematian';
-$route['report/rekapkematian/print']                        = 'Report/printRekapKematian';
+
+$route['report/rekapimunisasi']                                 = 'Report/rekap_all_imunisasi';
+$route['report/rekapimunisasi/cetak']                           = 'Report/cetakRekapImunisasi';
+$route['report/rekapimunisasi/export']                          = 'Report/exportRekapImunisasi';
+$route['report/rekapimunisasi/print']                           = 'Report/printRekapImunisasi';
+
+
+$route['report/rekapkematian']                                  = 'Report/rekap_all_kematian';
+$route['report/rekapkematian/cetak']                            = 'Report/cetakRekapKematian';
+$route['report/rekapkematian/export']                           = 'Report/exportRekapKematian';
+$route['report/rekapkematian/print']                            = 'Report/printRekapKematian';

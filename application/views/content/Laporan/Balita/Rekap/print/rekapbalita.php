@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Laporan Rekap Imunisasi</title>
+    <title>Laporan RekaP Penimbangan</title>
     <style>
         .logo {
             width: 50px;
@@ -68,11 +68,10 @@
     <br><br><br>
     <!-- <form action="<?= base_url() ?>report/balita/cetak" method="get"> -->
     <h3 class="header-text">
-        LAPORAN REKAP DATA IMUNISASI
+        LAPORAN REKAP DATA BALITA
     </h3>
     <h4 class="sub-header-text">
         POSYANDU DESA MANTADULU
-        <center><?= $start_date ?> - <?= $end_date ?></center>
     </h4>
     <br>
     <br>
@@ -85,29 +84,27 @@
                 <th>NIB</th>
                 <th>Nama Lengkap</th>
                 <th>Tempat Tanggal Lahir</th>
-                <th>Tanggal Imunisasi</th>
-                <th>Usia</th>
-                <th>Imunisasi</th>
-                <th>Vitamin A</th>
-                <th>Keterangan</th>
+                <th>Jenis Kelamin</th>
+                <th width="15%">Usia</th>
+                <th>Nama Ayah</th>
+                <th>Nama Ibu</th>
             </tr>
         </thead>
         <tbody>
             <?php
             $no = 0;
-            foreach ($imunisasi as $val) {
+            foreach ($balita as $val) {
                 $no++
             ?>
                 <tr>
                     <td><?= $no ?></td>
                     <td><?= $val->nib ?></td>
                     <td><?= $val->nama_lengkap ?></td>
-                    <td><?= $val->tempat_lahir . "," . $val->tanggal_lahir ?></td>
-                    <td><?= $val->tgl_imunisasi ?></td>
+                    <td><?= $val->tempat_lahir ?> , <?= $val->tanggal_lahir ?></td>
+                    <td><?= $val->jenis_kelamin ?></td>
                     <td><?= $val->usia ?> Bulan</td>
-                    <td><?= $val->imunisasi ?></td>
-                    <td><?= $val->vitamin ?></td>
-                    <td><?= $val->keterangan ?></td>
+                    <td><?= $val->nama_ayah ?></td>
+                    <td><?= $val->nama_ibu ?></td>
                 </tr>
             <?php } ?>
         </tbody>

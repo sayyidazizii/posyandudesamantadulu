@@ -12,7 +12,7 @@
   </div>
   <!-- Add Back button here, aligned to the right -->
   <div class="d-flex justify-content-end mb-4">
-    <a href="javascript:history.back()" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+    <a title="Kembali" href="javascript:history.back()" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
   </div>
 
   <!-- Row -->
@@ -55,7 +55,7 @@
               <tr>
                 <th>Kategori</th>
                 <td>
-                  <select name="type" class="form-control form-select">
+                  <select name="type" id="type" class="form-control form-select">
                     <option value="bulan">Bulan</option>
                     <option value="tahun">Tahun</option>
                   </select>
@@ -63,7 +63,9 @@
               </tr>
               <tr>
                 <th></th>
-                <td><button type="submit" class="btn btn-primary my-2">Simpan</button></td>
+                <td><button title="simpan" type="submit" class="btn btn-primary my-2">Simpan</button>
+                  <button type="reset" title="Batal" onclick="cancel()" class="btn btn-primary my-2">Batal</button>
+                </td>
               </tr>
             </table>
           </form>
@@ -76,7 +78,7 @@
 <!---Container Fluid-->
 <script>
   function validateText(input) {
-    input.value = input.value.replace(/[^A-Za-z]/g, '');
+    input.value = input.value.replace(/[^A-Za-z\s]/g, '');
   }
 
   function validateNumber(input) {

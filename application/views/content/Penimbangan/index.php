@@ -40,7 +40,7 @@
                           <th>No</th>
                           <th>NIB</th>
                           <th>Nama Lengkap</th>
-                          <th>Tempat Tanggal Lahir</th>
+                          <th width="30%">Tempat,Tanggal Lahir</th>
                           <th>Usia</th>
                           <th>Berat Badan</th>
                           <th>Tinggi Badan</th>
@@ -60,7 +60,7 @@
                             <td><?= $no ?></td>
                             <td><?= $val->nib ?></td>
                             <td><?= $val->nama_lengkap ?></td>
-                            <td><?= $val->tanggal_lahir ?></td>
+                            <td><?= $val->tempat_lahir . " ," . $val->tanggal_lahir ?></td>
                             <td><?= $val->usia ?>Bulan</td>
                             <td><?= $val->berat_badan ?> Kg</td>
                             <td><?= $val->tinggi_badan ?> cm</td>

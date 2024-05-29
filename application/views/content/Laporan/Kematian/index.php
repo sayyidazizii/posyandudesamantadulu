@@ -12,8 +12,9 @@
   </div>
   <!-- Add Back button here, aligned to the right -->
   <div class="d-flex justify-content-end mb-4">
-    <a href="javascript:history.back()" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+    <a title="Kembali" href="<?= base_url() ?>Home" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
   </div>
+  <div id="error-message" style="color: red;"></div>
 
   <!-- Row -->
   <div class="row">
@@ -181,8 +182,17 @@
 
   $('#printButton').click(function() {
     var idBalita = $('#id_balita_hidden').val();
-    var printUrl = "<?php echo base_url() ?>report/kematian/print?id_balita=" + idBalita;
-    window.open(printUrl, '_blank'); // Open print URL in a new tab
+    // Cek apakah ID balita sudah dipilih
+    if (idBalita === '' || idBalita === '0') {
+      // Jika belum dipilih, tampilkan pesan kesalahan
+      $('#error-message').text('Pilih Balita Sebelum cetak.');
+    } else {
+      // Jika sudah dipilih, buat URL cetak dan buka dalam tab baru
+      var printUrl = "<?php echo base_url() ?>report/balita/print?id_balita=" + idBalita;
+      window.open(printUrl, '_blank');
+      // Kosongkan pesan kesalahan jika ada
+      $('#error-message').text('');
+    }
   });
 </script>
 

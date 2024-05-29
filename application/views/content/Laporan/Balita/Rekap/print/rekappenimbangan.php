@@ -85,7 +85,7 @@
                 <th>NIB</th>
                 <th>Tanggal Penimbangan</th>
                 <th>Nama Lengkap</th>
-                <th>Tanggal Lahir</th>
+                <th>Tempat,Tanggal Lahir</th>
                 <th>Usia</th>
                 <th>Berat Badan</th>
                 <th>Tinggi Badan</th>
@@ -105,7 +105,7 @@
                     <td><?= $val->nib ?></td>
                     <td><?= $val->tgl_penimbangan ?></td>
                     <td><?= $val->nama_lengkap ?></td>
-                    <td><?= $val->tanggal_lahir ?></td>
+                    <td><?= $val->tempat_lahir . "," . $val->tanggal_lahir ?></td>
                     <td><?= $val->usia ?>Bulan</td>
                     <td><?= $val->berat_badan ?> Kg</td>
                     <td><?= $val->tinggi_badan ?> cm</td>

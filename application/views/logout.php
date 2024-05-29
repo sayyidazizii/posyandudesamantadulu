@@ -1,7 +1,7 @@
 <!-- Container Fluid-->
 <div class="container-fluid" id="container-wrapper">
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Data <?php echo $page ?></h1>
+    <h1 class="h3 mb-0 text-gray-800"> <?php echo $page ?></h1>
 
     <?php if ($this->session->flashdata('alert')) : ?>
       <div class="alert alert-<?php echo $this->session->flashdata('alert_type'); ?> alert-dismissible fade show" role="alert">
@@ -16,7 +16,7 @@
       <li class="breadcrumb-item"><a href="./">Home</a></li>
       <li class="breadcrumb-item">Tables</li>
       <li class="breadcrumb-item active" aria-current="page">
-        Data <?php echo $page ?>
+        <?php echo $page ?>
       </li>
     </ol>
   </div>

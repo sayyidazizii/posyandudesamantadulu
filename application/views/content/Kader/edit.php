@@ -12,7 +12,7 @@
   </div>
   <!-- Add Back button here, aligned to the right -->
   <div class="d-flex justify-content-end mb-4">
-    <a href="javascript:history.back()" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+    <a title="Kembali" href="javascript:history.back()" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
   </div>
 
   <!-- Row -->
@@ -68,7 +68,9 @@
               </tr>
               <tr>
                 <th></th>
-                <td><button type="submit" class="btn btn-primary my-2">Simpan</button></td>
+                <td><button title="Update" type="submit" class="btn btn-primary my-2">Update</button>
+                  <a type="reset" title="Batal" href="javascript:history.back()" class="btn btn-primary my-2">Batal</a>
+                </td>
               </tr>
             </table>
           </form>
@@ -81,7 +83,7 @@
 <!---Container Fluid-->
 <script>
   function validateText(input) {
-    input.value = input.value.replace(/[^A-Za-z]/g, '');
+    input.value = input.value.replace(/[^A-Za-z\s]/g, '');
   }
 
   function validateNumber(input) {

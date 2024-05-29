@@ -197,15 +197,16 @@ class Report extends CI_Controller
             $this->load->view('content/Laporan/Balita/view', $data);
             $this->load->view('layout/footer');
         } else {
-            $id_balita = $this->input->get('id_balita');
-            $data['id_balita'] = 0;
-            $data['balita'] = $this->M_balita->get_data();
+            // $id_balita = $this->input->get('id_balita');
+            // $data['id_balita'] = 0;
+            // $data['balita'] = $this->M_balita->get_data();
 
-            $this->load->view('layout/header');
-            $this->load->view('layout/sidebar');
-            $this->load->view('layout/navbar');
-            $this->load->view('content/Laporan/Balita/view', $data);
-            $this->load->view('layout/footer');
+            // $this->load->view('layout/header');
+            // $this->load->view('layout/sidebar');
+            // $this->load->view('layout/navbar');
+            // $this->load->view('content/Laporan/Balita/view', $data);
+            // $this->load->view('layout/footer');
+            redirect('Report/balita');
         }
     }
 
@@ -239,7 +240,7 @@ class Report extends CI_Controller
         $this->load->library('pdf');
 
         // Set paper size and orientation
-        $this->pdf->setPaper('A4', 'landscape');
+        $this->pdf->setPaper('A4', 'potrait');
 
         // Set filename
         $this->pdf->filename = "Laporan Balita.pdf";
@@ -454,9 +455,10 @@ class Report extends CI_Controller
             $data['id_balita'] = $this->input->get('id_balita');
             $data['balita'] = $this->M_balita->view($id_balita);
         } else {
-            $id_balita = $this->input->get('id_balita');
-            $data['id_balita'] = $this->input->get('id_balita');
-            $data['balita'] = $this->M_balita->get_data();
+            // $id_balita = $this->input->get('id_balita');
+            // $data['id_balita'] = $this->input->get('id_balita');
+            // $data['balita'] = $this->M_balita->get_data();
+            redirect('Report/balita');
         }
         // Load the view 
         $this->load->view('content/Laporan/Balita/print', $data);
@@ -481,15 +483,16 @@ class Report extends CI_Controller
             $this->load->view('content/Laporan/Kematian/view', $data);
             $this->load->view('layout/footer');
         } else {
-            $id_balita = $this->input->get('id_balita');
-            $data['id_balita'] = 0;
-            $data['kematian'] = $this->M_kematian->get_data();
+            // $id_balita = $this->input->get('id_balita');
+            // $data['id_balita'] = 0;
+            // $data['kematian'] = $this->M_kematian->get_data();
 
-            $this->load->view('layout/header');
-            $this->load->view('layout/sidebar');
-            $this->load->view('layout/navbar');
-            $this->load->view('content/Laporan/Kematian/view', $data);
-            $this->load->view('layout/footer');
+            // $this->load->view('layout/header');
+            // $this->load->view('layout/sidebar');
+            // $this->load->view('layout/navbar');
+            // $this->load->view('content/Laporan/Kematian/view', $data);
+            // $this->load->view('layout/footer');
+            redirect('Report/Kematian');
         }
     }
 
@@ -703,9 +706,10 @@ class Report extends CI_Controller
             $data['id_balita'] = $this->input->get('id_balita');
             $data['kematian'] = $this->M_kematian->print($id_balita);
         } else {
-            $id_balita = $this->input->get('id_balita');
-            $data['id_balita'] = $this->input->get('id_balita');
-            $data['kematian'] = $this->M_kematian->get_data();
+            // $id_balita = $this->input->get('id_balita');
+            // $data['id_balita'] = $this->input->get('id_balita');
+            // $data['kematian'] = $this->M_kematian->get_data();
+            redirect('Report/kematian');
         }
         // Load the view 
         $this->load->view('content/Laporan/Kematian/print', $data);
@@ -1430,7 +1434,7 @@ class Report extends CI_Controller
         $sheet->insertNewRowBefore(1, 1);
 
 
-        $sheet->setCellValue('A5', "LAPORAN REKAP DATA IMUNISASI BALITA"); // Set kolom A1 dengan tulisan "DATA SISWA"
+        $sheet->setCellValue('A5', "LAPORAN REKAP DATA KEMATIAN BALITA"); // Set kolom A1 dengan tulisan "DATA SISWA"
         $sheet->setCellValue('A6', "POSYANDU DESA MANTADULU"); // Set kolom A1 dengan tulisan "DATA SISWA"
         $sheet->mergeCells('A5:G5'); // Set Merge Cell pada kolom A1 sampai E1
         $sheet->getStyle('A5')->getFont()->setBold(true); // Set bold kolom A1
@@ -1560,5 +1564,318 @@ class Report extends CI_Controller
         }
         // Load the view 
         $this->load->view('content/Laporan/Balita/Rekap/print/rekapkematian', $data);
+    }
+
+
+    /**Rekap all Balita */
+    public function rekap_all_data_balita()
+    {
+        $start_date = $this->input->get('start_date');
+        $end_date     = $this->input->get('end_date');
+        $data['page'] = 'Laporan Rekap Data Balita';
+
+        if ($start_date != null and $end_date != null) {
+            $data['balita'] = $this->M_balita->all_rekap_balita($start_date, $end_date);
+            $data['start_date'] = $this->input->get('start_date');
+            $data['end_date'] = $this->input->get('end_date');
+        } else {
+            $data['balita'] = array();
+            $data['start_date'] = null;
+            $data['end_date'] = null;
+        }
+        $this->load->view('layout/header');
+        $this->load->view('layout/sidebar');
+        $this->load->view('layout/navbar');
+        $this->load->view('content/Laporan/Balita/Rekap/rekap_balita', $data);
+    }
+
+    public function cetakRekapDataBalita()
+    {
+
+        $data['page'] = 'Laporan Rekap Data Balita';
+
+        // $data['balita'] = $this->M_balita->all_rekap_balita();
+        $start_date = $this->input->get('start_date');
+        $end_date     = $this->input->get('end_date');
+        $data['page'] = 'Laporan Rekap Data Balita';
+
+        if ($start_date != null and $end_date != null) {
+            $data['balita'] = $this->M_balita->all_rekap_balita($start_date, $end_date);
+            $data['start_date'] = $this->input->get('start_date');
+            $data['end_date'] = $this->input->get('end_date');
+        } else {
+            $data['balita'] = array();
+            $data['start_date'] = null;
+            $data['end_date'] = null;
+        }
+
+        //logo 1
+        $imgpath1 = base_url('assets/img/luwu.png');
+        $ext1 = pathinfo($imgpath1, PATHINFO_EXTENSION);
+        $img1 = file_get_contents($imgpath1);
+        $data['logo1'] = 'data:image/' . $ext1 . ';base64,' . base64_encode($img1);
+
+        //logo2
+        $imgpath2 = base_url('assets/img/login-img.png');
+        $ext2 = pathinfo($imgpath2, PATHINFO_EXTENSION);
+        $img2 = file_get_contents($imgpath2);
+        $data['logo2'] = 'data:image/' . $ext2 . ';base64,' . base64_encode($img2);
+
+        // Load library DOMPDF
+        $this->load->library('pdf');
+
+        // Set paper size and orientation
+        $this->pdf->setPaper('A4', 'landscape');
+
+        // Set filename
+        $this->pdf->filename = "Laporan Rekap Data Balita.pdf";
+
+        // Load the view and create PDF
+        $this->pdf->load_view('content/Laporan/Balita/Rekap/pdf/rekap_balita_v', $data);
+    }
+
+    public function exportRekapDataBalita()
+    {
+
+        $data['page'] = 'Laporan Rekap Data Balita';
+
+        // if ($start_date != null and $end_date != null) {
+        // $data['balita'] = $this->M_balita->all_rekap_balita();
+        $start_date = $this->input->get('start_date');
+        $end_date     = $this->input->get('end_date');
+        $data['page'] = 'Laporan Rekap Data Balita';
+
+        if ($start_date != null and $end_date != null) {
+            $data['balita'] = $this->M_balita->all_rekap_balita($start_date, $end_date);
+            $data['start_date'] = $this->input->get('start_date');
+            $data['end_date'] = $this->input->get('end_date');
+        } else {
+            $data['balita'] = array();
+            $data['start_date'] = null;
+            $data['end_date'] = null;
+        }
+        // echo json_encode($data['balita']);
+        // exit;
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        // Buat sebuah variabel untuk menampung pengaturan style dari header tabel
+        $style_col = [
+            'font' => ['bold' => true], // Set font nya jadi bold
+            'alignment' => [
+                'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER, // Set text jadi ditengah secara horizontal (center)
+                'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+            ],
+            'borders' => [
+                'top' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border top dengan garis tipis
+                'right' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],  // Set border right dengan garis tipis
+                'bottom' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border bottom dengan garis tipis
+                'left' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN] // Set border left dengan garis tipis
+            ]
+        ];
+        // Buat sebuah variabel untuk menampung pengaturan style dari isi tabel
+        $style_row = [
+            'alignment' => [
+                'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+            ],
+            'borders' => [
+                'top' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border top dengan garis tipis
+                'right' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],  // Set border right dengan garis tipis
+                'bottom' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border bottom dengan garis tipis
+                'left' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN] // Set border left dengan garis tipis
+            ]
+        ];
+
+        // // Mendapatkan logo dari file
+        $logo = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+
+        $logoPath = 'assets/img/luwu.png'; // Ganti dengan path menuju logo Anda
+        $logo->setPath($logoPath);
+        $logo->setHeight(50); // Atur tinggi logo
+        $logo->setCoordinates('A2'); // Tentukan koordinat (kolom dan baris) di mana logo akan ditempatkan
+        $logo->setWorksheet($spreadsheet->getActiveSheet());
+
+        $logo2 = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+
+        $logoPath2 = 'assets/img/login-img.png'; // Ganti dengan path menuju logo Anda
+        $logo2->setPath($logoPath2);
+        $logo2->setHeight(50); // Atur tinggi logo
+        $logo2->setCoordinates('H2'); // Tentukan koordinat (kolom dan baris) di mana logo akan ditempatkan
+        $logo2->setWorksheet($spreadsheet->getActiveSheet());
+
+        // Geser header ke bawah satu baris
+        $sheet->insertNewRowBefore(1, 1);
+
+
+        $sheet->setCellValue('A5', "LAPORAN REKAP DATA BALITA"); // Set kolom A1 dengan tulisan "DATA SISWA"
+        $sheet->setCellValue('A6', "POSYANDU DESA MANTADULU"); // Set kolom A1 dengan tulisan "DATA SISWA"
+        $sheet->mergeCells('A5:H5'); // Set Merge Cell pada kolom A1 sampai E1
+        $sheet->getStyle('A5')->getFont()->setBold(true); // Set bold kolom A1
+        // Mengatur teks menjadi berada di tengah secara horizontal dan vertikal pada sel A5
+        $sheet->getStyle('A5')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('A5')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
+
+
+        $sheet->mergeCells('A6:H6'); // Set Merge Cell pada kolom A1 sampai E1
+        $sheet->getStyle('A6')->getFont()->setBold(true); // Set bold kolom A1
+        // Mengatur teks menjadi berada di tengah secara horizontal dan vertikal pada sel A6
+        $sheet->getStyle('A6')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('A6')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
+
+        // Buat header tabel nya pada baris ke 3
+        $sheet->setCellValue('A7', "NO"); // Set kolom A7 dengan tulisan "NO"
+        $sheet->setCellValue('B7', "NIB"); // Set kolom B7 dengan tulisan "NIS"
+        $sheet->setCellValue('C7', "NAMA LENGKAP"); // Set kolom C7 dengan tulisan "NAMA"
+        $sheet->setCellValue('D7', "TEMPAT, TANGGAL LAHIR"); // Set kolom D7 dengan tulisan "JENIS KELAMIN"
+        $sheet->setCellValue('E7', "JENIS KELAMIN");
+        $sheet->setCellValue('F7', "USIA");
+        $sheet->setCellValue('G7', "NAMA AYAH");
+        $sheet->setCellValue('H7', "NAMA IBU");
+        // $sheet->setCellValue('J7', "BERAT BADAN");
+        // $sheet->setCellValue('K7', "TINGGI BADAN");
+        // $sheet->setCellValue('L7', "LINGKAR KEPALA");
+        // $sheet->setCellValue('M7', "LINGKAR PERUT");
+        // $sheet->setCellValue('N7', "KETERANGAN");
+
+
+
+        // Apply style header yang telah kita buat tadi ke masing-masing kolom header
+        $sheet->getStyle('A7')->applyFromArray($style_col);
+        $sheet->getStyle('B7')->applyFromArray($style_col);
+        $sheet->getStyle('C7')->applyFromArray($style_col);
+        $sheet->getStyle('D7')->applyFromArray($style_col);
+        $sheet->getStyle('E7')->applyFromArray($style_col);
+        $sheet->getStyle('F7')->applyFromArray($style_col);
+        $sheet->getStyle('G7')->applyFromArray($style_col);
+        $sheet->getStyle('H7')->applyFromArray($style_col);
+        // $sheet->getStyle('I7')->applyFromArray($style_col);
+        // $sheet->getStyle('J7')->applyFromArray($style_col);
+        // $sheet->getStyle('K7')->applyFromArray($style_col);
+        // $sheet->getStyle('L7')->applyFromArray($style_col);
+        // $sheet->getStyle('M7')->applyFromArray($style_col);
+        // $sheet->getStyle('N7')->applyFromArray($style_col);
+
+
+        $no = 1; // Untuk penomoran tabel, di awal set dengan 1
+        $numrow = 8; // Set baris pertama untuk isi tabel adalah baris ke 4
+        foreach ($data['balita'] as $data) { // Lakukan looping pada variabel siswa
+            $sheet->setCellValue('A' . $numrow, $no);
+            $sheet->setCellValue('B' . $numrow, $data->nib);
+            $sheet->setCellValue('C' . $numrow, $data->nama_lengkap);
+            $sheet->setCellValue('D' . $numrow, $data->tempat_lahir . ", " . $data->tanggal_lahir);
+            $sheet->setCellValue('E' . $numrow, $data->jenis_kelamin);
+            $sheet->setCellValue('F' . $numrow, $data->usia . " bulan");
+            $sheet->setCellValue('G' . $numrow, $data->nama_ayah);
+            $sheet->setCellValue('H' . $numrow, $data->nama_ibu);
+            // $sheet->setCellValue('J' . $numrow, $data->berat_badan . 'Kg');
+            // $sheet->setCellValue('K' . $numrow, $data->tinggi_badan . 'cm');
+            // $sheet->setCellValue('L' . $numrow, $data->lingkar_kepala . 'cm');
+            // $sheet->setCellValue('M' . $numrow, $data->lingkar_perut . 'cm');
+            // $sheet->setCellValue('N' . $numrow, $data->keterangan);
+
+            // if ($data->status_bayar == 1) {
+            // 	$sheet->setCellValue('I' . $numrow, 'dibayar');
+            // } else {
+            // 	$sheet->setCellValue('I' . $numrow, 'dibayar');
+            // }
+            // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
+            $sheet->getStyle('A' . $numrow)->applyFromArray($style_row);
+            $sheet->getStyle('B' . $numrow)->applyFromArray($style_row);
+            $sheet->getStyle('C' . $numrow)->applyFromArray($style_row);
+            $sheet->getStyle('D' . $numrow)->applyFromArray($style_row);
+            $sheet->getStyle('E' . $numrow)->applyFromArray($style_row);
+            $sheet->getStyle('F' . $numrow)->applyFromArray($style_row);
+            $sheet->getStyle('G' . $numrow)->applyFromArray($style_row);
+            $sheet->getStyle('H' . $numrow)->applyFromArray($style_row);
+            // $sheet->getStyle('I' . $numrow)->applyFromArray($style_row);
+            // $sheet->getStyle('J' . $numrow)->applyFromArray($style_row);
+            // $sheet->getStyle('K' . $numrow)->applyFromArray($style_row);
+            // $sheet->getStyle('L' . $numrow)->applyFromArray($style_row);
+            // $sheet->getStyle('M' . $numrow)->applyFromArray($style_row);
+            // $sheet->getStyle('N' . $numrow)->applyFromArray($style_row);
+
+            // $sheet->getStyle('I' . $numrow)->applyFromArray($style_row);
+
+
+            $no++; // Tambah 1 setiap kali looping
+            $numrow++; // Tambah 1 setiap kali looping
+        }
+        // Set width kolom
+        $sheet->getColumnDimension('A')->setWidth(5);
+        $sheet->getColumnDimension('B')->setWidth(15);
+        $sheet->getColumnDimension('C')->setWidth(25);
+        $sheet->getColumnDimension('D')->setWidth(20);
+        $sheet->getColumnDimension('E')->setWidth(30);
+        $sheet->getColumnDimension('F')->setWidth(30);
+        $sheet->getColumnDimension('G')->setWidth(30);
+        $sheet->getColumnDimension('H')->setWidth(30);
+        // $sheet->getColumnDimension('I')->setWidth(30);
+        // $sheet->getColumnDimension('J')->setWidth(30);
+        // $sheet->getColumnDimension('K')->setWidth(30);
+        // $sheet->getColumnDimension('L')->setWidth(30);
+        // $sheet->getColumnDimension('M')->setWidth(30);
+        // $sheet->getColumnDimension('N')->setWidth(30);
+
+        // $sheet->getColumnDimension('I')->setWidth(30);
+
+
+        // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
+        $sheet->getDefaultRowDimension()->setRowHeight(-1);
+        // Set orientasi kertas jadi LANDSCAPE
+        $sheet->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
+        // Set judul file excel nya
+        $sheet->setTitle("Laporan Balita");
+        // Proses file excel
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment; filename="LAPORAN REKAP DATA BALITA.xlsx"'); // Set nama file excel nya
+        header('Cache-Control: max-age=0');
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('php://output');
+    }
+
+    public function printRekapDataBalita()
+    {
+        //logo 1
+        $imgpath1 = base_url('assets/img/luwu.png');
+        $ext1 = pathinfo($imgpath1, PATHINFO_EXTENSION);
+        $img1 = file_get_contents($imgpath1);
+        $data['logo1'] = 'data:image/' . $ext1 . ';base64,' . base64_encode($img1);
+
+        //logo2
+        $imgpath2 = base_url('assets/img/login-img.png');
+        $ext2 = pathinfo($imgpath2, PATHINFO_EXTENSION);
+        $img2 = file_get_contents($imgpath2);
+        $data['logo2'] = 'data:image/' . $ext2 . ';base64,' . base64_encode($img2);
+
+        // $start_date = $this->input->get('start_date');
+        // $end_date     = $this->input->get('end_date');
+        $data['page'] = 'Laporan Rekap Data Balita';
+
+        // if ($start_date != null and $end_date != null) {
+        // $data['balita'] = $this->M_balita->all_rekap_balita();
+        $start_date = $this->input->get('start_date');
+        $end_date     = $this->input->get('end_date');
+        $data['page'] = 'Laporan Rekap Data Balita';
+
+        if (
+            $start_date != null and $end_date != null
+        ) {
+            $data['balita'] = $this->M_balita->all_rekap_balita($start_date, $end_date);
+            $data['start_date'] = $this->input->get('start_date');
+            $data['end_date'] = $this->input->get('end_date');
+        } else {
+            $data['balita'] = array();
+            $data['start_date'] = null;
+            $data['end_date'] = null;
+        }
+
+        // $data['start_date'] = $this->input->get('start_date');
+        // $data['end_date'] = $this->input->get('end_date');
+        // } else {
+        //     $data['kematian'] = array();
+        //     $data['start_date'] = null;
+        //     $data['end_date'] = null;
+        // }
+        // Load the view 
+        $this->load->view('content/Laporan/Balita/Rekap/print/rekapbalita', $data);
     }
 }

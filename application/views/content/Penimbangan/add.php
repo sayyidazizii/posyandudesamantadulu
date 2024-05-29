@@ -12,7 +12,7 @@
     </div>
     <!-- Add Back button here, aligned to the right -->
     <div class="d-flex justify-content-end mb-4">
-        <a href="javascript:history.back()" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+        <a title="Kembali" href="javascript:history.back()" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
     </div>
 
     <!-- Row -->
@@ -80,23 +80,23 @@
                             </tr>
                             <tr>
                                 <th>Berat Badan (kg)</th>
-                                <td><input type="decimal" name="berat_badan" id="berat_badan" class="form-control form-control-sm my-2 border-dark" placeholder="Kg" required></td>
+                                <td><input type="decimal" oninput="validateNumber(this)" name="berat_badan" id="berat_badan" class="form-control form-control-sm my-2 border-dark" placeholder="Kg" required></td>
                             </tr>
                             <tr>
                                 <th>Tinggi Badan (cm)</th>
-                                <td><input type="decimal" name="tinggi_badan" id="tinggi_badan" class="form-control form-control-sm my-2 border-dark" placeholder="cm" required></td>
+                                <td><input type="decimal" oninput="validateNumber(this)" name="tinggi_badan" id="tinggi_badan" class="form-control form-control-sm my-2 border-dark" placeholder="cm" required></td>
                             </tr>
                             <tr>
                                 <th>Lingkar Kepala (cm)</th>
-                                <td><input type="decimal" name="lingkar_kepala" id="lingkar_kepala" class="form-control form-control-sm my-2 border-dark" placeholder="cm" required></td>
+                                <td><input type="decimal" oninput="validateNumber(this)" name="lingkar_kepala" id="lingkar_kepala" class="form-control form-control-sm my-2 border-dark" placeholder="cm" required></td>
                             </tr>
                             <tr>
                                 <th>Lingkar Perut (cm)</th>
-                                <td><input type="decimal" name="lingkar_perut" id="lingkar_perut" class="form-control form-control-sm my-2 border-dark" placeholder="cm" required></td>
+                                <td><input type="decimal" oninput="validateNumber(this)" name="lingkar_perut" id="lingkar_perut" class="form-control form-control-sm my-2 border-dark" placeholder="cm" required></td>
                             </tr>
                             <tr>
                                 <th>Keterangan</th>
-                                <td><input type="text" name="keterangan" id="keterangan" class="form-control form-control-sm my-2 border-dark"></td>
+                                <td><input type="text" oninput="validateText(this)" name="keterangan" id="keterangan" class="form-control form-control-sm my-2 border-dark"></td>
                             </tr>
                             <tr>
                                 <th></th>
@@ -115,16 +115,17 @@
 <!---Container Fluid-->
 <script>
     function validateText(input) {
-        input.value = input.value.replace(/[^A-Za-z]/g, '');
+        input.value = input.value.replace(/[^A-Za-z\s]/g, '');
     }
 
     function cancel() {
         $('#id_balita').select2('val', 0);
     }
 
-    // function validateNumber(input) {
-    //     input.value = input.value.replace(/\D/g, '');
-    // }
+    function validateNumber(input) {
+        // Menghapus semua karakter yang bukan angka, koma, atau titik
+        input.value = input.value.replace(/[^0-9.,]/g, '');
+    }
     // $('#usia').maskMoney({
     //     thousands: '.',
     //     decimal: ',',

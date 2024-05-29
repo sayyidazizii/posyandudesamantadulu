@@ -12,7 +12,7 @@
     </div>
     <!-- Add Back button here, aligned to the right -->
     <div class="d-flex justify-content-end mb-4">
-        <a href="<?= base_url() ?>Home" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+        <a title="Kembali" href="<?= base_url() ?>Home" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
     </div>
 
     <!-- Row -->
@@ -21,19 +21,27 @@
         <div class="col-lg-12">
             <div class="container">
                 <div class="row mb-3">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="col-sm-6 mb-3">
                         <div class="card card-hover">
                             <div class="card-body">
-                                <h5 class="card-title">Laporan Rekap Penimbangan Balita</h5>
-                                <a href="<?= base_url() ?>report/rekappenimbangan" class="btn btn-primary">lihat</a>
+                                <h5 class="card-title">Laporan Rekap Balita</h5>
+                                <a title="Lihat" href="<?= base_url() ?>report/rekapdatabalita" class="btn btn-primary">Lihat</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 mb-3">
+                        <div class="card card-hover">
+                            <div class="card-body">
+                                <h5 class="card-title">Laporan Rekap Penimbangan Balita</h5>
+                                <a title="Lihat" href="<?= base_url() ?>report/rekappenimbangan" class="btn btn-primary">Lihat</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
                         <div class="card card-hover">
                             <div class="card-body">
                                 <h5 class="card-title">Laporan Rekap Imunisasi Balita</h5>
-                                <a href="<?= base_url() ?>report/rekapimunisasi" class="btn btn-primary">lihat</a>
+                                <a title="Lihat" href="<?= base_url() ?>report/rekapimunisasi" class="btn btn-primary">Lihat</a>
                             </div>
                         </div>
                     </div>

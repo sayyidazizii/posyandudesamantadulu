@@ -234,8 +234,14 @@
                                 </label>
                                 <input type="password" name="password" placeholder="Enter password">
                             </div> -->
-                            <div class="row mb-3 mt-2 px-3">
-                                <button type="submit" class="btn btn-blue text-center">cari <i class="fas fa-search"></i></button>
+
+                            <div class="row mb-3 mt-2 px-1">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-blue text-center">cari <i class="fas fa-search"></i></button>
+                                </div>
+                                <div class="col">
+                                    <a href="<?= base_url() ?>" class="btn btn-blue text-center">kembali</a>
+                                </div>
                             </div>
                             <div class="row mb-4 px-3">
                                 <!-- <small class="font-weight-bold">Lupa Kata sandi? <a class="text-danger ">ubah password</a></small> -->

@@ -12,7 +12,7 @@
     </div>
     <!-- Add Back button here, aligned to the right -->
     <div class="d-flex justify-content-end mb-4">
-        <a href="javascript:history.back()" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+        <a title="Kembali" href="<?= base_url() ?>home" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
     </div>
 
     <!-- Row -->
@@ -47,46 +47,48 @@
                             </div>
                         </div>
                     </form>
-                    <h4>
-                        <center> LAPORAN REKAP DATA KEMATIAN BALITA <?= $start_date ?> - <?= $end_date ?></center>
-                    </h4>
-                    <div class="table-responsive">
-                        <table border="1" cellspacing="0" cellpadding="5" width="100%" class="table align-items-center table-flush table-hover" id="dataTableHover">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Tanggal Kematian</th>
-                                    <th>NIB</th>
-                                    <th>Nama Lengkap</th>
-                                    <th>Tempat Tanggal Lahir</th>
-                                    <th>Alamat</th>
-                                    <th>Keterangan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $no = 0;
-                                foreach ($kematian as $val) {
-                                    $no++
-                                ?>
+                    <div class="dataTableContainer" id="dataTableContainer">
+                        <h4>
+                            <center> LAPORAN REKAP DATA KEMATIAN BALITA <?= $start_date ?> - <?= $end_date ?></center>
+                        </h4>
+                        <div class="table-responsive">
+                            <table border="1" cellspacing="0" cellpadding="5" width="100%" class="table align-items-center table-flush table-hover" id="dataTableHover">
+                                <thead>
                                     <tr>
-                                        <td><?= $no ?></td>
-                                        <td><?= $val->tgl_kematian ?></td>
-                                        <td><?= $val->nib ?></td>
-                                        <td><?= $val->nama_lengkap ?></td>
-                                        <td><?= $val->tempat_lahir ?> , <?= $val->tanggal_lahir ?></td>
-                                        <td><?= $val->alamat ?></td>
-                                        <td><?= $val->keterangan ?></td>
+                                        <th>No</th>
+                                        <th>Tanggal Kematian</th>
+                                        <th>NIB</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>Tempat Tanggal Lahir</th>
+                                        <th>Alamat</th>
+                                        <th>Keterangan</th>
                                     </tr>
-                                <?php } ?>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $no = 0;
+                                    foreach ($kematian as $val) {
+                                        $no++
+                                    ?>
+                                        <tr>
+                                            <td><?= $no ?></td>
+                                            <td><?= $val->tgl_kematian ?></td>
+                                            <td><?= $val->nib ?></td>
+                                            <td><?= $val->nama_lengkap ?></td>
+                                            <td><?= $val->tempat_lahir ?> , <?= $val->tanggal_lahir ?></td>
+                                            <td><?= $val->alamat ?></td>
+                                            <td><?= $val->keterangan ?></td>
+                                        </tr>
+                                    <?php } ?>
 
-                            </tbody>
-                        </table>
-                        <!-- Tombol aksi -->
-                        <div class="d-flex justify-content-end">
-                            <a href="<?php echo base_url() ?>report/rekapkematian/cetak?start_date=<?= $start_date ?>&end_date=<?= $end_date ?>" target="_blank" class="btn btn-primary mx-2 my-2">Cetak pdf</a>
-                            <a href="<?php echo base_url() ?>report/rekapkematian/export?start_date=<?= $start_date ?>&end_date=<?= $end_date ?>" target="_blank" class="btn btn-primary mx-2 my-2">Export</a>
-                            <a href="<?php echo base_url() ?>report/rekapkematian/print?start_date=<?= $start_date ?>&end_date=<?= $end_date ?>" target="_blank" class="btn btn-primary mx-2 my-2">Print</a>
+                                </tbody>
+                            </table>
+                            <!-- Tombol aksi -->
+                            <div class="d-flex justify-content-end">
+                                <a href="<?php echo base_url() ?>report/rekapkematian/cetak?start_date=<?= $start_date ?>&end_date=<?= $end_date ?>" target="_blank" class="btn btn-primary mx-2 my-2">Unduh pdf</a>
+                                <a href="<?php echo base_url() ?>report/rekapkematian/export?start_date=<?= $start_date ?>&end_date=<?= $end_date ?>" target="_blank" class="btn btn-primary mx-2 my-2">Export Excel</a>
+                                <a href="<?php echo base_url() ?>report/rekapkematian/print?start_date=<?= $start_date ?>&end_date=<?= $end_date ?>" target="_blank" class="btn btn-primary mx-2 my-2">Print</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -119,6 +121,28 @@
 <!-- Page level custom scripts -->
 <script>
     $(document).ready(function() {
+
+        // Function to check if start date and end date are filled
+        function areDatesFilled() {
+            var startDate = $('#start_date').val();
+            var endDate = $('#end_date').val();
+            return startDate !== '' && endDate !== '';
+        }
+
+        // Function to show or hide table based on date inputs
+        function toggleTableVisibility() {
+            var startDate = $('#start_date').val();
+            var endDate = $('#end_date').val();
+
+            if (startDate !== '' && endDate !== '') {
+                $('#dataTableContainer').show();
+            } else {
+                $('#dataTableContainer').hide();
+            }
+        }
+
+        // Call toggleTableVisibility function initially
+        toggleTableVisibility();
         $("#dataTable").DataTable(); // ID From dataTable
         $("#dataTable2").DataTable(); // ID From dataTable
         $("#dataTableHover").DataTable(); // ID From dataTable with Hover

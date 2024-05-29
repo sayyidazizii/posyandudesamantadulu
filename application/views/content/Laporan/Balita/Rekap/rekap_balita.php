@@ -1,8 +1,3 @@
-<!-- <style>
-    #dataTableContainer {
-        display: none;
-    }
-</style> -->
 <!-- Container Fluid-->
 <div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -30,7 +25,7 @@
                     </h6>
                 </div>
                 <div class="container">
-                    <form action="<?= base_url() ?>Report/rekap_all_imunisasi" method="get">
+                    <form action="<?= base_url() ?>Report/rekap_all_data_balita" method="get">
                         <div class="row">
                             <div class="col">
                                 <label for="start_date" class="form-label">Tanggal Awal</label>
@@ -47,15 +42,14 @@
                             <div class="col">
                                 <label for="search" class="form-label"></label>
                                 <div class="d-flex flex-nowrap input-group mt-2">
-                                    <!-- Tambahkan id pada tombol "Tampilkan" -->
-                                    <button type="submit" id="btnShowTable" class="btn btn-primary">tampilkan <i class="fas fa-search"></i></button>
+                                    <button type="submit" class="btn btn-primary">tampilkan <i class="fas fa-search"></i></button>
                                 </div>
                             </div>
                         </div>
                     </form>
                     <div class="dataTableContainer" id="dataTableContainer">
                         <h4>
-                            <center>LAPORAN REKAP DATA IMUNISASI BALITA <?= $start_date ?> - <?= $end_date ?></center>
+                            <center> LAPORAN REKAP DATA BALITA </center>
                         </h4>
                         <div class="table-responsive">
                             <table border="1" cellspacing="0" cellpadding="5" width="100%" class="table align-items-center table-flush table-hover" id="dataTableHover">
@@ -64,33 +58,28 @@
                                         <th>No</th>
                                         <th>NIB</th>
                                         <th>Nama Lengkap</th>
-                                        <th>Tanggal Imunisasi</th>
-                                        <th>Tempat,Tanggal Lahir</th>
-                                        <th>Usia</th>
-                                        <th>Imunisasi</th>
-                                        <th>Vitamin_A</th>
-                                        <th>Keterangan</th>
+                                        <th>Tempat Tanggal Lahir</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th width="15%">Usia</th>
+                                        <th>Nama Ayah</th>
+                                        <th>Nama Ibu</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    if ($imunisasi < 0) {
-                                        echo "data kosong";
-                                    }
                                     $no = 0;
-                                    foreach ($imunisasi as $val) {
+                                    foreach ($balita as $val) {
                                         $no++
                                     ?>
                                         <tr>
                                             <td><?= $no ?></td>
                                             <td><?= $val->nib ?></td>
                                             <td><?= $val->nama_lengkap ?></td>
-                                            <td><?= $val->tgl_imunisasi ?></td>
-                                            <td><?= $val->tempat_lahir . "," . $val->tanggal_lahir ?></td>
+                                            <td><?= $val->tempat_lahir ?> , <?= $val->tanggal_lahir ?></td>
+                                            <td><?= $val->jenis_kelamin ?></td>
                                             <td><?= $val->usia ?> Bulan</td>
-                                            <td><?= $val->imunisasi ?></td>
-                                            <td><?= $val->vitamin ?></td>
-                                            <td><?= $val->keterangan ?></td>
+                                            <td><?= $val->nama_ayah ?></td>
+                                            <td><?= $val->nama_ibu ?></td>
                                         </tr>
                                     <?php } ?>
 
@@ -98,13 +87,12 @@
                             </table>
                             <!-- Tombol aksi -->
                             <div class="d-flex justify-content-end">
-                                <a href="<?php echo base_url() ?>report/rekapimunisasi/cetak?start_date=<?= $start_date ?>&end_date=<?= $end_date ?>" target="_blank" class="btn btn-primary mx-2 my-2">Unduh pdf</a>
-                                <a href="<?php echo base_url() ?>report/rekapimunisasi/export?start_date=<?= $start_date ?>&end_date=<?= $end_date ?>" target="_blank" class="btn btn-primary mx-2 my-2">Export Excel</a>
-                                <a href="<?php echo base_url() ?>report/rekapimunisasi/print?start_date=<?= $start_date ?>&end_date=<?= $end_date ?>" target="_blank" class="btn btn-primary mx-2 my-2">Print</a>
+                                <a href="<?php echo base_url() ?>report/rekapdatabalita/cetak?start_date=<?= $start_date ?>&end_date=<?= $end_date ?>" target="_blank" class="btn btn-primary mx-2 my-2">Unduh pdf</a>
+                                <a href="<?php echo base_url() ?>report/rekapdatabalita/export?start_date=<?= $start_date ?>&end_date=<?= $end_date ?>" target="_blank" class="btn btn-primary mx-2 my-2">Export Excel</a>
+                                <a href="<?php echo base_url() ?>report/rekapdatabalita/print?start_date=<?= $start_date ?>&end_date=<?= $end_date ?>" target="_blank" class="btn btn-primary mx-2 my-2">Print</a>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -135,8 +123,6 @@
 <!-- Page level custom scripts -->
 <script>
     $(document).ready(function() {
-        // Sembunyikan elemen DataTable secara default
-        // $("#dataTableContainer").hide();
         // Function to check if start date and end date are filled
         function areDatesFilled() {
             var startDate = $('#start_date').val();
@@ -164,33 +150,13 @@
         $("#dataTableHover").DataTable(); // ID From dataTable with Hover
         $("#dataTableHover2").DataTable(); // ID From dataTable with Hover
     });
-
     $('.select2-single').select2();
 
     // Select2 Single  with Placeholder
     $('.select2-single-placeholder').select2({
-        placeholder: "Select a Province",
+        placeholder: "Select ",
         allowClear: true
     });
-
-    // // Tampilkan atau sembunyikan elemen DataTable berdasarkan pengisian tanggal awal dan akhir
-    // $('#start_date, #end_date').change(function() {
-
-    // });
-
-    // Ketika tombol "Tampilkan" diklik, tampilkan elemen DataTable
-    // $('#btnShowTable').click(function() {
-    //     // $("#dataTableContainer").show();
-    //     var startDate = $('#start_date').val();
-    //     var endDate = $('#end_date').val();
-
-    //     if (startDate && endDate) {
-    //         $("#dataTableContainer").show();
-    //     } else {
-    //         $("#dataTableContainer").hide();
-    //     }
-    // });
-
     //id_balita
     $('#id_balita').change(function() {
         // Mendapatkan nilai yang dipilih
@@ -213,6 +179,8 @@
                     $('#nama_ayah').val(data.nama_ayah);
                     $('#nama_ibu').val(data.nama_ibu);
                     $('#usia').val(data.usia);
+
+
                 } else {
                     // If data is null or not found, empty the input fields
                     $('#nib').val('');
@@ -227,6 +195,7 @@
             },
             error: function() {
                 // console.log('Terjadi kesalahan saat menyimpan data jasa.');
+
             }
         });
     });

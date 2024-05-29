@@ -85,6 +85,15 @@ class M_balita extends CI_Model
         return $this->db->get()->result();
     }
 
+    public function all_rekap_balita($start_date, $end_date)
+    {
+        $this->db->select('tbl_balita.*');
+        $this->db->from($this->table);
+        $this->db->where('tbl_balita.tanggal_lahir >=', $start_date);
+        $this->db->where('tbl_balita.tanggal_lahir <=', $end_date);
+        $this->db->where('tbl_balita.data_state', 0);
+        return $this->db->get()->result();
+    }
 
     public function all_rekap_penimbangan($start_date, $end_date)
     {
