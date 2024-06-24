@@ -103,6 +103,48 @@ class Report extends CI_Controller
         // Load the view and create PDF
         $this->pdf->load_view('content/Laporan/Balita/rekap_imunisasi_v', $data);
     }
+    
+    //imunisasi
+    public function viewRiwayatImunisasi()
+    {
+        $id_balita = $this->input->get('id_balita');
+        $data['page'] = 'Laporan Riwayat Imunisasi Balita';
+
+        $data['balita'] = $this->M_balita->getbyid($id_balita);
+
+        if ($id_balita > 0) {
+            $id_balita = $this->input->get('id_balita');
+            $data['id_balita'] = $this->input->get('id_balita');
+            $data['imunisasi'] = $this->M_imunisasi->getbyBalita($id_balita);
+        } else {
+            $id_balita = $this->input->get('id_balita');
+            $data['id_balita'] = $this->input->get('id_balita');
+            $data['imunisasi'] = $this->M_imunisasi->get_data();
+        }
+        //logo 1
+        $imgpath1 = base_url('assets/img/luwu.png');
+        $ext1 = pathinfo($imgpath1, PATHINFO_EXTENSION);
+        $img1 = file_get_contents($imgpath1);
+        $data['logo1'] = 'data:image/' . $ext1 . ';base64,' . base64_encode($img1);
+
+        //logo2
+        $imgpath2 = base_url('assets/img/login-img.png');
+        $ext2 = pathinfo($imgpath2, PATHINFO_EXTENSION);
+        $img2 = file_get_contents($imgpath2);
+        $data['logo2'] = 'data:image/' . $ext2 . ';base64,' . base64_encode($img2);
+
+        // Load library DOMPDF
+        $this->load->library('pdf');
+
+        // Set paper size and orientation
+        $this->pdf->setPaper('A4', 'landscape');
+
+        // Set filename
+        $this->pdf->filename = "Laporan Riwayat Imunisasi.pdf";
+
+        // Load the view and create PDF
+        $this->pdf->load_view('content/Laporan/Balita/riwayat_imunisasi_v', $data);
+    }
 
 
     //**Balita */

@@ -49,7 +49,7 @@
                     </form>
                     <div class="dataTableContainer" id="dataTableContainer">
                         <h4>
-                            <center> LAPORAN REKAP DATA BALITA </center>
+                            <center> LAPORAN REKAP DATA BALITA <?= $start_date ?> - <?= $end_date ?></center>
                         </h4>
                         <div class="table-responsive">
                             <table border="1" cellspacing="0" cellpadding="5" width="100%" class="table align-items-center table-flush table-hover" id="dataTableHover">

@@ -72,6 +72,7 @@
     </h3>
     <h4 class="sub-header-text">
         POSYANDU DESA MANTADULU
+        <center><?= $start_date ?> - <?= $end_date ?></center>
     </h4>
     <br>
     <br>

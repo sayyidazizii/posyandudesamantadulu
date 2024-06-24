@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>cetak laporan rekap penimbangan balita</title>
+    <title>cetak laporan rekap data balita</title>
     <style>
         .logo {
             width: 50px;
@@ -72,6 +72,7 @@
         </h3>
         <h3 class="sub-header-text">
             POSYANDU DESA MANTADULU
+            <center><?= $start_date ?> - <?= $end_date ?></center>
         </h3>
         <br>
         <br>

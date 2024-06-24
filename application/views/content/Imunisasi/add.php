@@ -79,6 +79,10 @@
                                 <td><input type="decimal" oninput="validateNumber(this)" required placeholder="bulan" name="usia" id="usia" class="form-control form-control-sm my-2 border-dark" required></td>
                             </tr>
                             <tr>
+                                <th>Usia Saat Imunisasi (bln)</th>
+                                <td><input type="decimal" oninput="validateNumber(this)" required placeholder="bulan" name="usia_imunisasi" id="usia_imunisasi" class="form-control form-control-sm my-2 border-dark" required></td>
+                            </tr>
+                            <tr>
                                 <th>Imunisasi</th>
                                 <td>
                                     <select class="select2-single-placeholder form-control" name="imunisasi" id="imunisasi" required>
@@ -128,7 +132,7 @@
 <!---Container Fluid-->
 <script>
     function validateText(input) {
-        input.value = input.value.replace(/[^A-Za-z\s]/g, '');
+        input.value = input.value.replace(/[^AZaz\s]/g, '');
     }
 
     function validateNumber(input) {
@@ -187,6 +191,7 @@
         diff += tanggalPenimbangan.getMonth();
 
         $('#usia').val(diff);
+        $('#usia_imunisasi').val(diff);
     }
     $('#tgl_imunisasi').change(function() {
         var tanggalLahir = new Date($('#tanggal_lahir').val());

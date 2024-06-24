@@ -68,6 +68,7 @@ class Imunisasi extends CI_Controller
 		$vitamin 	                = $this->input->post('vitamin');
 		$keterangan	                = $this->input->post('keterangan');
 		$usia	                	= $this->input->post('usia');
+		$usia_imunisasi	            = $this->input->post('usia_imunisasi');
 
 
 		$idbalita = $this->M_balita->getbyid($id_balita);
@@ -81,6 +82,7 @@ class Imunisasi extends CI_Controller
 			'imunisasi'         => $imunisasi,
 			'vitamin'           => $vitamin,
 			'keterangan'	    => $keterangan,
+			'usia_imunisasi'	=> $usia_imunisasi,
 			'data_state'	    => 0
 		);
 
@@ -127,6 +129,8 @@ class Imunisasi extends CI_Controller
 		$vitamin 	                = $this->input->post('vitamin');
 		$keterangan	                = $this->input->post('keterangan');
 		$usia	                	= $this->input->post('usia');
+		$usia_imunisasi	            = $this->input->post('usia_imunisasi');
+
 
 
 		$idbalita = $this->M_balita->getbyid($id_balita);
@@ -142,6 +146,7 @@ class Imunisasi extends CI_Controller
 			'imunisasi'         => $imunisasi,
 			'vitamin'           => $vitamin,
 			'keterangan'	    => $keterangan,
+			'usia_imunisasi'	=> $usia_imunisasi,
 			'data_state'	    => 0
 		);
 

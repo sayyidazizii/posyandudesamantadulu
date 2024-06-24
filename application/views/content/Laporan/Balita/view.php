@@ -72,6 +72,7 @@
             <div class="d-flex justify-content-end">
               <a href="<?php echo base_url() ?>report/balita/analys?id_balita=<?= $id_balita ?>" target="_blank" class="btn btn-primary mx-2 my-2">Analisis Stunting <i class="fas fa-search"></i></a>
               <!-- <button id="analisisStunting" class="btn btn-primary mx-2 my-2">Analisis Stunting <i class="fas fa-search"></i></button> -->
+              <a href="<?php echo base_url() ?>report/balita/riwayat_imunisasi?id_balita=<?= $id_balita ?>" target="_blank" class="btn btn-primary mx-2 my-2">Riwayat Imunisasi</a>
               <a href="<?php echo base_url() ?>report/balita/rekap?id_balita=<?= $id_balita ?>" target="_blank" class="btn btn-primary mx-2 my-2">Rekap Data Penimbangan</a>
               <a href="<?php echo base_url() ?>report/balita/rekap_imunisasi?id_balita=<?= $id_balita ?>" target="_blank" class="btn btn-primary mx-2 my-2">Rekap Data Imunisasi</a>
               <a href="<?php echo base_url() ?>report/balita/cetak?id_balita=<?= $id_balita ?>" target="_blank" class="btn btn-primary mx-2 my-2">Unduh Pdf</a>

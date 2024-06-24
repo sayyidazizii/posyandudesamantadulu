@@ -125,6 +125,7 @@ $route['imunisasi/process-edit']                        = 'Imunisasi/processEdit
 $route['report/dataBalita']                             = 'Report/fetch_data';
 
 $route['report/balita']                                 = 'Report/Balita';
+$route['report/balita/riwayat_imunisasi']               = 'Report/viewRiwayatImunisasi';
 $route['report/balita/view']                            = 'Report/viewBalita';
 $route['report/balita/rekap']                           = 'Report/viewRekap';
 $route['report/balita/rekap_imunisasi']                 = 'Report/viewRekapImunisasi';

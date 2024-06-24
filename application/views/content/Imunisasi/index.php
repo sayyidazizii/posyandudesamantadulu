@@ -40,8 +40,10 @@
                           <th>No</th>
                           <th>NIB</th>
                           <th>Nama Lengkap</th>
-                          <th>Tempat Tanggal Lahir</th>
-                          <th>Usia</th>
+                          <th>Tempat/Tanggal Lahir</th>
+                          <th>Tanggal/Imunisasi</th>
+                          <th width="10%">Usia.Balita</th>
+                          <th width="10%">Usia Imunisasi</th>
                           <th>Imunisasi</th>
                           <th>Vitamin A</th>
                           <th>Keterangan</th>
@@ -59,7 +61,9 @@
                             <td><?= $val->nib ?></td>
                             <td><?= $val->nama_lengkap ?></td>
                             <td><?= $val->tanggal_lahir ?></td>
+                            <td><?= $val->tgl_imunisasi ?></td>
                             <td><?= $val->usia ?> Bulan</td>
+                            <td><?= $val->usia_imunisasi ?> Bulan</td>
                             <td><?= $val->imunisasi ?></td>
                             <td><?= $val->vitamin ?></td>
                             <td><?= $val->keterangan ?></td>

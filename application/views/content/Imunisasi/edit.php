@@ -69,7 +69,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <h2>Penimbangan</h2>
+                                    <h2>Imunisasi</h2>
                                 </td>
                             </tr>
 
@@ -79,7 +79,11 @@
                             </tr>
                             <tr>
                                 <th>Usia (bln)</th>
-                                <td><input type="decimal" required oninput="validateNumber(this)" name="usia" id="usia" class="form-control form-control-sm my-2 border-dark" required></td>
+                                <td><input type="decimal" required oninput="validateNumber(this)" name="usia" id="usia" class="form-control form-control-sm my-2 border-dark"  required></td>
+                            </tr>
+                            <tr>
+                                <th>Usia Saat Imunisasi (bln)</th>
+                                <td><input type="decimal" oninput="validateNumber(this)" placeholder="bulan" name="usia_imunisasi" id="usia_imunisasi" class="form-control form-control-sm my-2 border-dark"value="<?php echo $imunisasi->usia_imunisasi ?>" required></td>
                             </tr>
                             <tr>
                                 <th>Imunisasi</th>
@@ -178,6 +182,8 @@
             diff += tanggalPenimbangan.getMonth();
 
             $('#usia').val(diff);
+            $('#usia_imunisasi').val(diff);
+
         }
         $('#tgl_imunisasi').change(function() {
             var tanggalLahir = new Date($('#tanggal_lahir').val());
